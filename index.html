@@ -488,7 +488,7 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
         <div class="progress-bar-large"><div class="progress-fill-large" id="progress-fill" style="width:0%"></div></div>
       </div>
     </div>
-    <div class="warning-box">⏱️ <strong>Tiempo límite:</strong> <span id="time-limit-text">8 minutos</span> · Una vez seleccionada la opción, no podrás cambiarla</div>
+    <div class="warning-box">⏱️ <strong>Tiempo límite:</strong> <span id="time-limit-text">8 minutos</span> · Puedes cambiar tu opción antes de pasar a la siguiente pregunta</div>
     <div class="question-card" id="question-card">
       <div class="question-meta" id="question-meta"></div>
       <div class="question-context" id="question-context" style="display:none"></div>
@@ -1922,20 +1922,19 @@ function showQuestion() {
         ctxEl.innerHTML = '';
     }
 
-    // Opciones
+    // Opciones - permitir cambiar la respuesta antes de avanzar
     const opts = document.getElementById('options-container');
     opts.innerHTML = q.options.map((opt, i) => {
         const sel = currentQuiz.answers[currentQuiz.currentIndex];
         let cls = 'option-btn';
         if (sel !== undefined && sel === i) cls += ' selected';
-        return '<button class="' + cls + '" onclick="selectOption(' + i + ')" '
-            + (sel !== undefined ? 'disabled' : '') + '>'
+        return '<button class="' + cls + '" onclick="selectOption(' + i + ')">'
             + '<span class="option-letter">' + String.fromCharCode(65 + i) + '</span>'
             + '<span>' + opt + '</span></button>';
     }).join('');
 
     const nb = document.getElementById('next-btn');
-    nb.textContent = currentQuiz.currentIndex === currentQuiz.questions.length - 1 ? 'Terminar bloque' : 'Siguiente';
+    nb.textContent = currentQuiz.currentIndex === currentQuiz.questions.length - 1 ? '✅ Terminar bloque' : 'Siguiente →';
     nb.disabled = currentQuiz.answers[currentQuiz.currentIndex] === undefined;
 }
 
