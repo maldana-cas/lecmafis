@@ -89,6 +89,19 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
 .stat-label{font-size:.78rem;opacity:.9;margin-top:.4rem;font-weight:500}
 /* ==== COMPONENTS GRID ==== */
 .section-title-dash{font-size:1.4rem;color:var(--dark);font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem}
+.quick-access-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;margin-bottom:2rem}
+.quick-access-btn{display:flex;align-items:center;gap:1rem;width:100%;padding:1.4rem 1.5rem;border:none;border-radius:14px;cursor:pointer;text-align:left;color:white;font-family:inherit;transition:all .25s ease;box-shadow:0 4px 14px rgba(0,0,0,.12);position:relative;overflow:hidden}
+.quick-access-btn::before{content:'';position:absolute;top:-30%;right:-10%;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,transparent 70%);pointer-events:none}
+.quick-access-btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.quick-access-btn:active{transform:translateY(-1px)}
+.quick-access-btn.sim-fisica{background:linear-gradient(135deg,#EA580C 0%,#F97316 60%,#FB923C 100%)}
+.quick-access-btn.sim-logico{background:linear-gradient(135deg,#7C2D12 0%,#9D174D 50%,#BE185D 100%)}
+.qab-icon{font-size:2.4rem;flex-shrink:0;width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.18);border-radius:12px;backdrop-filter:blur(6px)}
+.qab-text{flex:1;position:relative}
+.qab-title{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
+.qab-subtitle{font-size:.82rem;opacity:.95;line-height:1.4}
+.qab-arrow{font-size:1.5rem;font-weight:bold;flex-shrink:0;opacity:.85}
+@media (max-width:600px){.quick-access-btn{padding:1.1rem 1rem}.qab-icon{font-size:2rem;width:50px;height:50px}.qab-title{font-size:1.02rem}.qab-subtitle{font-size:.76rem}}
 .components-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-bottom:2rem}
 .component-card{background:white;padding:1.75rem;border-radius:12px;cursor:pointer;transition:all .25s;border:1px solid var(--gray-light);position:relative;overflow:hidden}
 .component-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--primary)}
@@ -290,6 +303,7 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
       <li><a onclick="showPage('home')">Inicio</a></li>
       <li><a onclick="showPage('dashboard')">Mi Panel</a></li>
       <li><a onclick="showPage('simulacros')">🎯 Simulacros</a></li>
+      <li><a onclick="showPage('logico')">🧩 R. Lógico</a></li>
       <li id="nav-admin" style="display:none"><a onclick="showPage('admin')">Administración</a></li>
     </ul>
     <div id="auth-buttons">
@@ -378,6 +392,26 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
   </div>
 
   <div id="components-view">
+    <!-- Botones de acceso rápido a Simulacros - VISIBLES EN MÓVIL -->
+    <div class="quick-access-grid">
+      <button class="quick-access-btn sim-fisica" onclick="showPage('simulacros')">
+        <div class="qab-icon">🎯</div>
+        <div class="qab-text">
+          <div class="qab-title">Simulacros de Física</div>
+          <div class="qab-subtitle">3 simulacros · 10 preguntas cada uno · 20 minutos</div>
+        </div>
+        <div class="qab-arrow">→</div>
+      </button>
+      <button class="quick-access-btn sim-logico" onclick="showPage('logico')">
+        <div class="qab-icon">🧩</div>
+        <div class="qab-text">
+          <div class="qab-title">Razonamiento Lógico</div>
+          <div class="qab-subtitle">2 bloques · 10 preguntas cada uno · Secuencias y series</div>
+        </div>
+        <div class="qab-arrow">→</div>
+      </button>
+    </div>
+
     <h3 class="section-title-dash">Áreas de evaluación</h3>
     <div class="components-grid" id="components-grid">
       <div class="component-card lectura" onclick="selectComponent('lectura')">
@@ -634,6 +668,91 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
   </div>
 </section>
 
+<!-- ============ SECCIÓN DE RAZONAMIENTO LÓGICO ============ -->
+<section class="dashboard" id="logico-page">
+  <div class="dashboard-header" style="background:linear-gradient(135deg,#7C2D12 0%,#9D174D 50%,#BE185D 100%)">
+    <h2>🧩 Razonamiento Lógico</h2>
+    <p>Pon a prueba tu capacidad de identificar patrones y resolver secuencias</p>
+    <div style="background:rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:1rem 1.25rem;border-radius:10px;margin-top:1.25rem;border:1px solid rgba(255,255,255,.2);font-size:.92rem;line-height:1.6">
+      ⚠️ <strong>Importante:</strong> Cada bloque tiene 10 preguntas y 15 minutos. Al finalizar verás tu puntaje y recibirás tips para mejorar.
+    </div>
+  </div>
+
+  <div id="logico-list">
+    <h3 class="section-title-dash">Selecciona un bloque</h3>
+    <div class="components-grid">
+      <div class="component-card" style="border-left:5px solid #9D174D" onclick="iniciarLogico('b1')">
+        <div class="component-icon" style="background:rgba(157,23,77,.15);color:#9D174D">🔢</div>
+        <h3>Bloque 1</h3>
+        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Secuencias numéricas y patrones</p>
+        <p style="font-size:.85rem">10 preguntas · 15 minutos · Encuentra el siguiente número</p>
+        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar bloque →</div>
+      </div>
+      <div class="component-card" style="border-left:5px solid #BE185D" onclick="iniciarLogico('b2')">
+        <div class="component-icon" style="background:rgba(190,24,93,.15);color:#BE185D">🎨</div>
+        <h3>Bloque 2</h3>
+        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Series de figuras y analogías visuales</p>
+        <p style="font-size:.85rem">10 preguntas · 15 minutos · ¿Qué figura sigue?</p>
+        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar bloque →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vista del bloque en curso -->
+  <div class="quiz-section" id="log-quiz-section">
+    <button class="back-btn" onclick="confirmarSalirLog()">← Salir del bloque</button>
+    <div class="quiz-header">
+      <div class="quiz-header-info">
+        <h3 id="log-title">Razonamiento Lógico</h3>
+        <p id="log-block-name"></p>
+      </div>
+      <div class="timer-display" id="log-timer-display">15:00</div>
+      <div class="quiz-progress">
+        <div class="quiz-progress-text">
+          <span>Pregunta <span id="log-current-question">1</span> de 10</span>
+          <span id="log-answered-count">0 respondidas</span>
+        </div>
+        <div class="progress-bar-large"><div class="progress-fill-large" id="log-progress-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="warning-box">⏱️ <strong>Tiempo límite:</strong> 15 minutos · Puedes cambiar tu opción antes de pasar a la siguiente pregunta</div>
+    <div class="question-card" id="log-question-card">
+      <div class="question-meta" id="log-question-meta"></div>
+      <div class="question-context" id="log-question-context" style="display:none"></div>
+      <p class="question-text" id="log-question-text">Cargando...</p>
+      <div class="options-grid" id="log-options-container"></div>
+    </div>
+    <div class="quiz-actions">
+      <button class="btn btn-danger" onclick="confirmarSalirLog()">Salir</button>
+      <button class="btn btn-primary" id="log-next-btn" onclick="siguienteLog()" disabled>Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Vista del resultado del bloque -->
+  <div class="results-card" id="log-results-section" style="background:linear-gradient(135deg,#7C2D12 0%,#BE185D 100%)">
+    <h2>🧩 ¡Bloque completado!</h2>
+    <div class="results-score" id="log-final-score">0%</div>
+    <p class="results-message" id="log-results-message"></p>
+    <div class="results-feedback">
+      <h3>📊 Tu desempeño</h3>
+      <div class="feedback-stats">
+        <div class="feedback-stat"><div class="feedback-stat-value" id="log-feedback-correct">0</div><div class="feedback-stat-label">Correctas</div></div>
+        <div class="feedback-stat"><div class="feedback-stat-value" id="log-feedback-incorrect">0</div><div class="feedback-stat-label">Incorrectas</div></div>
+        <div class="feedback-stat"><div class="feedback-stat-value" id="log-feedback-time">00:00</div><div class="feedback-stat-label">Tiempo</div></div>
+      </div>
+      <div class="feedback-recommendation" id="log-feedback-rec" style="margin-top:1rem"></div>
+      <div id="log-tips-section" style="margin-top:1.25rem;background:rgba(255,255,255,.1);padding:1.25rem;border-radius:10px;border-left:4px solid #FBBF24">
+        <h4 style="margin-bottom:.75rem;font-size:1rem;font-weight:700">💡 Tips para Razonamiento Lógico</h4>
+        <ul id="log-tips-list" style="list-style:none;padding-left:0;font-size:.88rem;line-height:1.7"></ul>
+      </div>
+    </div>
+    <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;position:relative;margin-top:1rem">
+      <button class="btn btn-outline" style="background:rgba(255,255,255,.15);color:white;border-color:rgba(255,255,255,.3)" onclick="volverALogico()">Volver a bloques</button>
+      <button class="btn btn-success" onclick="showPage('dashboard')">Ir a Mi Panel</button>
+    </div>
+  </div>
+</section>
+
 <div class="modal" id="login-modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -708,7 +827,7 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
 
 <script>
 // ==================== CONFIGURACIÓN ====================
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVcywRBzwn_wGquOXhlXEmufYS-1AbSIeu1-DUV1ECfWiTJ3BFF4wFyXC0uQUKbJ1R/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcRurt-mg2lGCrXUE98uMx1JV6hlPInIH2W7iaj7HlfvO_LH4ygDnTqg-9wCrfsge3oQ/exec';
 
 // ==================== METADATA DE COMPONENTES Y COMPETENCIAS ====================
 const COMPONENTS = {
@@ -1761,14 +1880,14 @@ function showPage(page) {
     document.getElementById('dashboard-page').classList.remove('active');
     const simPage = document.getElementById('simulacros-page');
     if (simPage) simPage.classList.remove('active');
+    const logPage = document.getElementById('logico-page');
+    if (logPage) logPage.classList.remove('active');
     const ap = document.getElementById('admin-panel');
     if (ap) ap.classList.remove('active');
 
-    // Detener timer de simulacro si estaba corriendo
-    if (typeof simTimer !== 'undefined' && simTimer) {
-        clearInterval(simTimer);
-        simTimer = null;
-    }
+    // Detener timers
+    if (typeof simTimer !== 'undefined' && simTimer) { clearInterval(simTimer); simTimer = null; }
+    if (typeof logTimer !== 'undefined' && logTimer) { clearInterval(logTimer); logTimer = null; }
 
     if (page === 'home') {
         document.getElementById('home-page').style.display = 'block';
@@ -1776,7 +1895,6 @@ function showPage(page) {
     } else if (page === 'dashboard') {
         if (!currentUser) { openModal('login'); return; }
         document.getElementById('dashboard-page').classList.add('active');
-        // Mostrar solo la vista de componentes al entrar al dashboard
         document.getElementById('components-view').style.display = 'block';
         document.getElementById('competencies-container').classList.remove('active');
         document.getElementById('levels-container').classList.remove('active');
@@ -1789,6 +1907,12 @@ function showPage(page) {
         document.getElementById('simulacros-list').style.display = 'block';
         document.getElementById('sim-quiz-section').classList.remove('active');
         document.getElementById('sim-results-section').classList.remove('active');
+    } else if (page === 'logico') {
+        if (!currentUser) { openModal('login'); return; }
+        if (logPage) logPage.classList.add('active');
+        document.getElementById('logico-list').style.display = 'block';
+        document.getElementById('log-quiz-section').classList.remove('active');
+        document.getElementById('log-results-section').classList.remove('active');
     } else if (page === 'admin') {
         document.getElementById('dashboard-page').classList.add('active');
         if (ap) ap.classList.add('active');
@@ -2596,6 +2720,266 @@ function terminarSimulacro(timeExpired) {
 
     const tipsList = document.getElementById('sim-tips-list');
     tipsList.innerHTML = sim.tips.map(t => '<li style="padding:.4rem 0;display:flex;gap:.5rem;align-items:flex-start"><span style="flex-shrink:0">✓</span><span>' + t + '</span></li>').join('');
+}
+
+// ==================== RAZONAMIENTO LÓGICO ====================
+// 2 bloques × 10 preguntas = 20 preguntas, 15 min cada uno
+
+// Helper: crear figura individual (cuadrado, círculo, triángulo, etc.)
+function svgFig(shape, color, fill) {
+    fill = fill !== undefined ? fill : true;
+    const f = fill ? color : 'none';
+    const s = color;
+    const sw = fill ? 1 : 3;
+    let inner = '';
+    if (shape === 'cuadrado')   inner = `<rect x="15" y="15" width="50" height="50" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'circulo')    inner = `<circle cx="40" cy="40" r="25" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'triangulo')  inner = `<polygon points="40,12 68,65 12,65" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'rombo')      inner = `<polygon points="40,10 70,40 40,70 10,40" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'estrella')   inner = `<polygon points="40,12 47,32 68,32 51,45 57,65 40,53 23,65 29,45 12,32 33,32" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'pentagono')  inner = `<polygon points="40,12 68,32 58,65 22,65 12,32" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'hexagono')   inner = `<polygon points="40,10 65,25 65,55 40,70 15,55 15,25" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'flecha')     inner = `<polygon points="15,30 50,30 50,15 70,40 50,65 50,50 15,50" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'corazon')    inner = `<path d="M 40 65 C 20 45, 5 30, 20 18 C 30 12, 40 22, 40 30 C 40 22, 50 12, 60 18 C 75 30, 60 45, 40 65 Z" fill="${f}" stroke="${s}" stroke-width="${sw}"/>`;
+    else if (shape === 'incognita')  inner = `<rect x="10" y="10" width="60" height="60" fill="#FEF3C7" stroke="#D97706" stroke-width="2" stroke-dasharray="4,3"/><text x="40" y="52" text-anchor="middle" font-size="36" font-weight="bold" fill="#D97706">?</text>`;
+    else if (shape === 'vacio')      inner = `<rect x="10" y="10" width="60" height="60" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,3"/>`;
+    return `<svg viewBox="0 0 80 80" width="64" height="64" style="display:inline-block;vertical-align:middle">${inner}</svg>`;
+}
+
+// Helper: secuencia horizontal de figuras
+function svgSerieFiguras(figuras, opciones) {
+    let html = '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0">';
+    html += '<div style="display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:.5rem">';
+    figuras.forEach((f, i) => {
+        if (i > 0) html += '<span style="font-size:1.5rem;color:#94A3B8;font-weight:bold">→</span>';
+        html += '<div style="background:white;padding:.3rem;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)">' + f + '</div>';
+    });
+    html += '</div></div>';
+    if (opciones) {
+        html += '<div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem;font-size:.85rem;color:#64748B"><em>Las opciones de respuesta aparecen abajo</em></div>';
+    }
+    return html;
+}
+
+// Helper: mostrar las 4 opciones visuales en línea (para incrustar como opciones de texto)
+function svgOpcionFig(figura) {
+    return '<div style="display:inline-flex;align-items:center;gap:.5rem"><div style="background:white;padding:.2rem;border-radius:6px;border:1px solid #E2E8F0">' + figura + '</div></div>';
+}
+
+const LOGICO = {
+    b1: {
+        nombre: 'Secuencias numéricas y patrones',
+        descripcion: 'Identifica el patrón lógico-matemático que sigue una serie de números y predice los siguientes valores.',
+        tiempo: 15,
+        preguntas: [
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>2, 4, 8, 16, 32, ___</div>", question:"¿Qué número sigue en la secuencia?", options:["48","56","64","128"], correct:2 },
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>1, 3, 6, 10, 15, ___</div>", question:"¿Cuál es el siguiente número?", options:["18","20","21","25"], correct:2 },
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>5, 10, 20, 40, 80, ___</div>", question:"¿Cuál es el siguiente número?", options:["100","120","160","200"], correct:2 },
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>100, 90, 81, 73, 66, ___</div>", question:"¿Qué número sigue en la secuencia?", options:["58","60","62","64"], correct:1 },
+            { context:"Observa la siguiente secuencia (sucesión de Fibonacci):<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>1, 1, 2, 3, 5, 8, ___</div>", question:"¿Cuál es el siguiente número?", options:["10","11","12","13"], correct:3 },
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>1, 4, 9, 16, 25, ___</div>", question:"¿Qué número sigue (son cuadrados perfectos)?", options:["30","32","36","49"], correct:2 },
+            { context:"Observa las siguientes parejas y encuentra el patrón:<br><br><div style='text-align:center;font-size:1.3rem;font-weight:600;color:#1E3A8A'>2 → 6 · 3 → 9 · 4 → 12 · 5 → ___</div>", question:"¿Cuál es el número que sigue?", options:["13","14","15","16"], correct:2 },
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.4rem'>3, 6, 12, 24, 48, ___</div>", question:"¿Cuál es el siguiente número?", options:["72","96","98","100"], correct:1 },
+            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.5rem;font-weight:700;color:#1E3A8A;letter-spacing:.4rem'>2, 5, 11, 23, 47, ___</div>", question:"¿Qué número sigue? (regla: multiplicar por 2 y sumar 1)", options:["89","91","93","95"], correct:3 },
+            { context:"Observa la siguiente secuencia con dos series alternadas:<br><br><div style='text-align:center;font-size:1.5rem;font-weight:700;color:#1E3A8A;letter-spacing:.4rem'>2, 10, 4, 20, 6, 30, 8, ___</div>", question:"¿Qué número sigue?", options:["32","36","40","48"], correct:2 }
+        ],
+        retroalimentacion: {
+            alta: 'Excelente. Tienes una gran habilidad para detectar patrones numéricos y aplicar reglas lógicas. Esta capacidad es muy útil tanto en matemáticas como en pruebas de razonamiento.',
+            media: 'Buen nivel. Identificas la mayoría de los patrones, pero algunos más complejos (con dos series alternadas o reglas compuestas) requieren más práctica.',
+            baja: 'Necesitas reforzar tu capacidad para reconocer patrones. Practica observando la diferencia entre números consecutivos: ¿se suma algo fijo? ¿se multiplica? ¿hay dos series intercaladas?'
+        },
+        tips: [
+            'Primero observa la diferencia entre números consecutivos: ¿hay un patrón fijo? (suma, resta, multiplicación, división).',
+            'Si la diferencia no es constante, mira la diferencia DE las diferencias (segunda derivada). Muchas veces hay patrón ahí.',
+            'Revisa si los números son potencias (cuadrados, cubos) o cubos perfectos.',
+            'Si nada coincide, prueba con dos series alternadas: posiciones impares (1ra, 3ra...) y posiciones pares (2da, 4ta...) por separado.',
+            'En la sucesión de Fibonacci, cada número es la suma de los dos anteriores: 1, 1, 2, 3, 5, 8, 13...',
+            'Verifica tu respuesta aplicando el patrón hacia atrás: si encuentras la regla, debe funcionar para TODA la secuencia.',
+            'Si tienes parejas (a → b), busca la relación: ¿se multiplica? ¿se suma? ¿se eleva al cuadrado?'
+        ]
+    },
+    b2: {
+        nombre: 'Series de figuras y analogías visuales',
+        descripcion: 'Reconoce patrones visuales en secuencias de figuras: rotaciones, traslaciones, cambios de color y forma.',
+        tiempo: 15,
+        preguntas: [
+            { context:"Observa la siguiente secuencia de figuras y decide cuál continúa:" + svgSerieFiguras([svgFig('circulo','#3B82F6'),svgFig('cuadrado','#3B82F6'),svgFig('triangulo','#3B82F6'),svgFig('circulo','#3B82F6'),svgFig('cuadrado','#3B82F6'),svgFig('incognita','')]), question:"¿Qué figura completa la serie?", options:[svgOpcionFig(svgFig('circulo','#3B82F6')),svgOpcionFig(svgFig('cuadrado','#3B82F6')),svgOpcionFig(svgFig('triangulo','#3B82F6')),svgOpcionFig(svgFig('rombo','#3B82F6'))], correct:2 },
+            { context:"Observa la siguiente secuencia de figuras:" + svgSerieFiguras([svgFig('cuadrado','#EA580C'),svgFig('cuadrado','#7C3AED'),svgFig('cuadrado','#10B981'),svgFig('cuadrado','#EA580C'),svgFig('cuadrado','#7C3AED'),svgFig('incognita','')]), question:"¿Qué figura sigue?", options:[svgOpcionFig(svgFig('cuadrado','#EA580C')),svgOpcionFig(svgFig('cuadrado','#10B981')),svgOpcionFig(svgFig('cuadrado','#7C3AED')),svgOpcionFig(svgFig('cuadrado','#1E3A8A'))], correct:1 },
+            { context:"Observa la siguiente secuencia (las figuras se llenan progresivamente):" + svgSerieFiguras([svgFig('circulo','#7C3AED',false),svgFig('circulo','#7C3AED',false),svgFig('circulo','#7C3AED'),svgFig('cuadrado','#7C3AED',false),svgFig('cuadrado','#7C3AED',false),svgFig('incognita','')]), question:"¿Qué figura completa la serie?", options:[svgOpcionFig(svgFig('cuadrado','#7C3AED',false)),svgOpcionFig(svgFig('cuadrado','#7C3AED')),svgOpcionFig(svgFig('circulo','#7C3AED')),svgOpcionFig(svgFig('triangulo','#7C3AED'))], correct:1 },
+            { context:"Observa la siguiente secuencia (las figuras aumentan en número de lados):" + svgSerieFiguras([svgFig('triangulo','#059669'),svgFig('cuadrado','#059669'),svgFig('pentagono','#059669'),svgFig('hexagono','#059669'),svgFig('incognita','')]), question:"¿Qué figura sigue lógicamente?", options:[svgOpcionFig(svgFig('circulo','#059669')),svgOpcionFig(svgFig('triangulo','#059669')),svgOpcionFig('<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\"><polygon points=\"40,10 60,20 70,40 60,60 40,70 20,60 10,40 20,20\" fill=\"#059669\"/></svg>'),svgOpcionFig(svgFig('estrella','#059669'))], correct:2 },
+            { context:"Observa el patrón: la figura rota 90° en sentido horario en cada paso." + svgSerieFiguras([svgFig('flecha','#DC2626'),'<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\" style=\"display:inline-block;vertical-align:middle\"><g transform=\"rotate(90,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>','<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\" style=\"display:inline-block;vertical-align:middle\"><g transform=\"rotate(180,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>',svgFig('incognita','')]), question:"¿Qué flecha continúa la serie?", options:[svgOpcionFig(svgFig('flecha','#DC2626')),svgOpcionFig('<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\"><g transform=\"rotate(270,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>'),svgOpcionFig('<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\"><g transform=\"rotate(45,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>'),svgOpcionFig(svgFig('flecha','#1E3A8A'))], correct:1 },
+            { context:"Observa la secuencia: los círculos aumentan de tamaño." + '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0"><div style="display:flex;gap:.6rem;align-items:center;justify-content:center"><svg viewBox="0 0 80 80" width="40" height="40"><circle cx="40" cy="40" r="10" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="50" height="50"><circle cx="40" cy="40" r="18" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="60" height="60"><circle cx="40" cy="40" r="25" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="70" height="70"><circle cx="40" cy="40" r="32" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="64" height="64"><rect x="10" y="10" width="60" height="60" fill="#FEF3C7" stroke="#D97706" stroke-width="2" stroke-dasharray="4,3"/><text x="40" y="52" text-anchor="middle" font-size="36" font-weight="bold" fill="#D97706">?</text></svg></div></div>', question:"¿Qué círculo continúa la serie?", options:['Un círculo más grande (radio mayor)','Un círculo del mismo tamaño','Un círculo más pequeño','Un cuadrado del mismo tamaño'], correct:0 },
+            { context:"Observa la secuencia (alternancia entre figura llena y vacía):" + svgSerieFiguras([svgFig('estrella','#F59E0B'),svgFig('estrella','#F59E0B',false),svgFig('estrella','#F59E0B'),svgFig('estrella','#F59E0B',false),svgFig('incognita','')]), question:"¿Qué figura completa la serie?", options:[svgOpcionFig(svgFig('estrella','#F59E0B')),svgOpcionFig(svgFig('estrella','#F59E0B',false)),svgOpcionFig(svgFig('circulo','#F59E0B')),svgOpcionFig(svgFig('triangulo','#F59E0B'))], correct:0 },
+            { context:"En la siguiente analogía, la primera pareja muestra la regla. Encuentra la figura que sigue la misma lógica:" + '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0"><div style="display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap">' + svgFig('cuadrado','#3B82F6') + '<span style="font-size:1.4rem;color:#64748B">es a</span>' + svgFig('cuadrado','#3B82F6',false) + '<span style="font-size:1.5rem;color:#94A3B8;margin:0 .5rem">||</span>' + svgFig('circulo','#EA580C') + '<span style="font-size:1.4rem;color:#64748B">es a</span>' + svgFig('incognita','') + '</div></div>', question:"¿Qué figura completa la analogía?", options:[svgOpcionFig(svgFig('circulo','#EA580C')),svgOpcionFig(svgFig('circulo','#EA580C',false)),svgOpcionFig(svgFig('cuadrado','#EA580C')),svgOpcionFig(svgFig('triangulo','#EA580C'))], correct:1 },
+            { context:"Observa la secuencia. Cada figura tiene un patrón de color que se repite cada 3 elementos:" + svgSerieFiguras([svgFig('triangulo','#DC2626'),svgFig('triangulo','#059669'),svgFig('triangulo','#7C3AED'),svgFig('triangulo','#DC2626'),svgFig('triangulo','#059669'),svgFig('incognita','')]), question:"¿Qué color tendrá el siguiente triángulo?", options:['Rojo',svgOpcionFig(svgFig('triangulo','#7C3AED'))+' Morado','Verde','Azul'], correct:1 },
+            { context:"Observa la siguiente secuencia (el número de figuras aumenta uno cada vez):" + '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0"><div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap"><div style="display:flex;gap:.2rem">' + svgFig('cuadrado','#10B981') + '</div><span style="color:#94A3B8">→</span><div style="display:flex;gap:.2rem">' + svgFig('cuadrado','#10B981') + svgFig('cuadrado','#10B981') + '</div><span style="color:#94A3B8">→</span><div style="display:flex;gap:.2rem">' + svgFig('cuadrado','#10B981') + svgFig('cuadrado','#10B981') + svgFig('cuadrado','#10B981') + '</div><span style="color:#94A3B8">→</span>' + svgFig('incognita','') + '</div></div>', question:"¿Cuántos cuadrados verdes tendrá la siguiente figura?", options:['3 cuadrados','4 cuadrados','5 cuadrados','6 cuadrados'], correct:1 }
+        ],
+        retroalimentacion: {
+            alta: 'Excelente desempeño. Tienes una gran capacidad visual para detectar patrones, rotaciones, alternancias y analogías. Esto es muy útil en pruebas de razonamiento abstracto.',
+            media: 'Buen nivel. Reconoces los patrones más comunes, pero algunos casos con rotaciones o cambios múltiples (color + forma + tamaño) pueden costarte. Sigue practicando.',
+            baja: 'Necesitas reforzar tu razonamiento visual. Practica observando con calma cada figura: ¿cambia de forma? ¿de color? ¿de tamaño? ¿gira? Identifica UNA propiedad a la vez.'
+        },
+        tips: [
+            'Observa una propiedad a la vez: forma, color, tamaño, orientación, número de elementos.',
+            'En analogías (A es a B como C es a ?): identifica qué le pasó a A para convertirse en B, y aplica lo mismo a C.',
+            'En rotaciones, las flechas y figuras asimétricas suelen girar 90°, 180° o 270° en cada paso.',
+            'Cuenta los lados o elementos: muchas series siguen un patrón numérico (triángulo→3, cuadrado→4, pentágono→5...).',
+            'En patrones de color, busca ciclos: rojo-azul-rojo-azul, o secuencias de 3 que se repiten.',
+            'Si la figura se llena/vacía, fíjate si es alternancia (lleno-vacío-lleno) o progresión (vacío-medio-lleno).',
+            'Si todo parece confuso, descarta opciones obviamente incorrectas primero y elige entre las restantes.'
+        ]
+    }
+};
+
+// Estado del bloque de lógico en curso
+let currentLog = null;
+let logTimer = null;
+let logTimeRemaining = 0;
+
+function iniciarLogico(bId) {
+    const blk = LOGICO[bId];
+    if (!blk) return;
+    currentLog = {
+        id: bId,
+        blk: blk,
+        currentIndex: 0,
+        answers: [],
+        startTime: Date.now()
+    };
+    logTimeRemaining = blk.tiempo * 60;
+    document.getElementById('logico-list').style.display = 'none';
+    document.getElementById('log-quiz-section').classList.add('active');
+    document.getElementById('log-results-section').classList.remove('active');
+    document.getElementById('log-title').textContent = '🧩 ' + blk.nombre;
+    document.getElementById('log-block-name').textContent = blk.descripcion;
+    iniciarTimerLog();
+    mostrarPreguntaLog();
+}
+
+function mostrarPreguntaLog() {
+    const blk = currentLog.blk;
+    const idx = currentLog.currentIndex;
+    const q = blk.preguntas[idx];
+    document.getElementById('log-current-question').textContent = idx + 1;
+    document.getElementById('log-progress-fill').style.width = (idx / blk.preguntas.length * 100) + '%';
+    const answered = currentLog.answers.filter(a => a !== undefined).length;
+    document.getElementById('log-answered-count').textContent = answered + ' respondidas';
+
+    document.getElementById('log-question-meta').innerHTML = '<span class="q-tag competency">🧩 ' + blk.nombre + '</span>';
+    document.getElementById('log-question-text').textContent = q.question;
+
+    const ctxEl = document.getElementById('log-question-context');
+    if (q.context) {
+        ctxEl.style.display = 'block';
+        ctxEl.innerHTML = q.context;
+    } else {
+        ctxEl.style.display = 'none';
+    }
+
+    const opts = document.getElementById('log-options-container');
+    opts.innerHTML = q.options.map((opt, i) => {
+        const sel = currentLog.answers[idx];
+        let cls = 'option-btn';
+        if (sel !== undefined && sel === i) cls += ' selected';
+        return '<button class="' + cls + '" onclick="seleccionarOpcionLog(' + i + ')">'
+            + '<span class="option-letter">' + String.fromCharCode(65 + i) + '</span>'
+            + '<span>' + opt + '</span></button>';
+    }).join('');
+
+    const nb = document.getElementById('log-next-btn');
+    nb.textContent = idx === blk.preguntas.length - 1 ? '✅ Terminar bloque' : 'Siguiente →';
+    nb.disabled = currentLog.answers[idx] === undefined;
+}
+
+function seleccionarOpcionLog(i) {
+    currentLog.answers[currentLog.currentIndex] = i;
+    mostrarPreguntaLog();
+}
+
+function siguienteLog() {
+    const blk = currentLog.blk;
+    currentLog.currentIndex++;
+    if (currentLog.currentIndex >= blk.preguntas.length) {
+        terminarLogico(false);
+    } else {
+        mostrarPreguntaLog();
+    }
+}
+
+function confirmarSalirLog() {
+    if (confirm('¿Salir del bloque? Perderás todo el progreso de este intento.')) {
+        detenerTimerLog();
+        currentLog = null;
+        volverALogico();
+    }
+}
+
+function volverALogico() {
+    detenerTimerLog();
+    document.getElementById('logico-list').style.display = 'block';
+    document.getElementById('log-quiz-section').classList.remove('active');
+    document.getElementById('log-results-section').classList.remove('active');
+}
+
+function iniciarTimerLog() {
+    actualizarTimerLog();
+    logTimer = setInterval(() => {
+        logTimeRemaining--;
+        actualizarTimerLog();
+        if (logTimeRemaining <= 0) {
+            detenerTimerLog();
+            terminarLogico(true);
+        }
+    }, 1000);
+}
+
+function detenerTimerLog() {
+    if (logTimer) { clearInterval(logTimer); logTimer = null; }
+}
+
+function actualizarTimerLog() {
+    const m = Math.floor(logTimeRemaining / 60);
+    const s = logTimeRemaining % 60;
+    const td = document.getElementById('log-timer-display');
+    if (td) {
+        td.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+        td.className = 'timer-display' + (logTimeRemaining < 120 ? ' warning' : '');
+    }
+}
+
+function terminarLogico(timeExpired) {
+    detenerTimerLog();
+    const blk = currentLog.blk;
+    const totalTime = blk.tiempo * 60;
+    const elapsed = totalTime - logTimeRemaining;
+    const em = Math.floor(elapsed / 60), es = elapsed % 60;
+    const timeStr = String(em).padStart(2, '0') + ':' + String(es).padStart(2, '0');
+
+    let correct = 0;
+    blk.preguntas.forEach((q, i) => {
+        if (currentLog.answers[i] === q.correct) correct++;
+    });
+    const total = blk.preguntas.length;
+    const pct = Math.round((correct / total) * 100);
+
+    document.getElementById('log-quiz-section').classList.remove('active');
+    document.getElementById('log-results-section').classList.add('active');
+    document.getElementById('log-final-score').textContent = pct + '%';
+    document.getElementById('log-feedback-correct').textContent = correct;
+    document.getElementById('log-feedback-incorrect').textContent = total - correct;
+    document.getElementById('log-feedback-time').textContent = timeStr;
+
+    let retro;
+    if (pct >= 80) retro = blk.retroalimentacion.alta;
+    else if (pct >= 50) retro = blk.retroalimentacion.media;
+    else retro = blk.retroalimentacion.baja;
+
+    const msg = pct >= 80 ? '🏆 ¡Excelente desempeño!' : pct >= 50 ? '💪 ¡Buen trabajo, sigue así!' : '📚 Necesitas más práctica';
+    document.getElementById('log-results-message').textContent = (timeExpired ? '⏱️ Tiempo agotado. ' : '') + msg;
+    document.getElementById('log-feedback-rec').innerHTML = '<strong>📌 Bloque:</strong> ' + blk.nombre + '<br><br><strong>📝 Retroalimentación:</strong> ' + retro;
+
+    const tipsList = document.getElementById('log-tips-list');
+    tipsList.innerHTML = blk.tips.map(t => '<li style="padding:.4rem 0;display:flex;gap:.5rem;align-items:flex-start"><span style="flex-shrink:0">✓</span><span>' + t + '</span></li>').join('');
 }
 </script>
 </body>
