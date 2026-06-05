@@ -96,6 +96,7 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
 .quick-access-btn:active{transform:translateY(-1px)}
 .quick-access-btn.sim-fisica{background:linear-gradient(135deg,#EA580C 0%,#F97316 60%,#FB923C 100%)}
 .quick-access-btn.sim-logico{background:linear-gradient(135deg,#7C2D12 0%,#9D174D 50%,#BE185D 100%)}
+.quick-access-btn.sim-mat{background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 60%,#3B82F6 100%)}
 .qab-icon{font-size:2.4rem;flex-shrink:0;width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.18);border-radius:12px;backdrop-filter:blur(6px)}
 .qab-text{flex:1;position:relative}
 .qab-title{font-size:1.15rem;font-weight:700;margin-bottom:.3rem}
@@ -302,8 +303,8 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
     <ul class="nav-links">
       <li><a onclick="showPage('home')">Inicio</a></li>
       <li><a onclick="showPage('dashboard')">Mi Panel</a></li>
-      <li><a onclick="showPage('simulacros')">🎯 Simulacros</a></li>
-      <li><a onclick="showPage('logico')">🧩 R. Lógico</a></li>
+      <li><a onclick="showPage('simulacros')">🎯 Sim. Física</a></li>
+      <li><a onclick="showPage('simulacros-mat')">🔢 Sim. Matemáticas</a></li>
       <li id="nav-admin" style="display:none"><a onclick="showPage('admin')">Administración</a></li>
     </ul>
     <div id="auth-buttons">
@@ -402,14 +403,12 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
         </div>
         <div class="qab-arrow">→</div>
       </button>
-      <button class="quick-access-btn sim-logico" onclick="showPage('logico')">
-        <div class="qab-icon">🧩</div>
-        <div class="qab-text">
-          <div class="qab-title">Razonamiento Lógico</div>
-          <div class="qab-subtitle">2 bloques · 10 preguntas cada uno · Secuencias y series</div>
-        </div>
+      <button class="quick-access-btn sim-mat" onclick="showPage('simulacros-mat')">
+        <div class="qab-icon">🔢</div>
+        <div class="qab-text"><div class="qab-title">Simulacros de Matemáticas</div><div class="qab-subtitle">3 simulacros · 10 preguntas · 20 min · ICFES oficial</div></div>
         <div class="qab-arrow">→</div>
       </button>
+      
     </div>
 
     <h3 class="section-title-dash">Áreas de evaluación</h3>
@@ -669,85 +668,85 @@ body{background:#F8FAFC;min-height:100vh;overflow-x:hidden;color:var(--dark);lin
 </section>
 
 <!-- ============ SECCIÓN DE RAZONAMIENTO LÓGICO ============ -->
-<section class="dashboard" id="logico-page">
-  <div class="dashboard-header" style="background:linear-gradient(135deg,#7C2D12 0%,#9D174D 50%,#BE185D 100%)">
-    <h2>🧩 Razonamiento Lógico</h2>
-    <p>Pon a prueba tu capacidad de identificar patrones y resolver secuencias</p>
+
+
+
+<!-- ============ SECCIÓN DE SIMULACROS DE MATEMÁTICAS ============ -->
+<section class="dashboard" id="simulacros-mat-page">
+  <div class="dashboard-header" style="background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 50%,#3B82F6 100%)">
+    <h2>🔢 Simulacros de Matemáticas</h2>
+    <p>Practica con preguntas oficiales del cuadernillo ICFES Saber 11° · Marzo 2026</p>
     <div style="background:rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:1rem 1.25rem;border-radius:10px;margin-top:1.25rem;border:1px solid rgba(255,255,255,.2);font-size:.92rem;line-height:1.6">
-      ⚠️ <strong>Importante:</strong> Cada bloque tiene 10 preguntas y 15 minutos. Al finalizar verás tu puntaje y recibirás tips para mejorar.
+      ⚠️ <strong>Importante:</strong> Cada simulacro tiene 10 preguntas y 20 minutos. Preguntas del cuadernillo oficial Icfes (Saber 11° Marzo 2026) de uso académico. Al finalizar verás tu puntaje, retroalimentación y tips.
     </div>
   </div>
-
-  <div id="logico-list">
-    <h3 class="section-title-dash">Selecciona un bloque</h3>
+  <div id="simulacros-mat-list">
+    <h3 class="section-title-dash">Selecciona un simulacro</h3>
     <div class="components-grid">
-      <div class="component-card" style="border-left:5px solid #9D174D" onclick="iniciarLogico('b1')">
-        <div class="component-icon" style="background:rgba(157,23,77,.15);color:#9D174D">🔢</div>
-        <h3>Bloque 1</h3>
-        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Secuencias numéricas y patrones</p>
-        <p style="font-size:.85rem">10 preguntas · 15 minutos · Encuentra el siguiente número</p>
-        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar bloque →</div>
+      <div class="component-card" style="border-left:5px solid #2563EB" onclick="iniciarSimulacroMat('sm1')">
+        <div class="component-icon" style="background:rgba(37,99,235,.15);color:#2563EB">📊</div>
+        <h3>Simulacro 1 (SM1)</h3>
+        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Interpretación y representación</p>
+        <p style="font-size:.85rem">10 preguntas · 20 minutos · Tablas, gráficas y funciones</p>
+        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar simulacro →</div>
       </div>
-      <div class="component-card" style="border-left:5px solid #BE185D" onclick="iniciarLogico('b2')">
-        <div class="component-icon" style="background:rgba(190,24,93,.15);color:#BE185D">🎨</div>
-        <h3>Bloque 2</h3>
-        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Series de figuras y analogías visuales</p>
-        <p style="font-size:.85rem">10 preguntas · 15 minutos · ¿Qué figura sigue?</p>
-        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar bloque →</div>
+      <div class="component-card" style="border-left:5px solid #7C3AED" onclick="iniciarSimulacroMat('sm2')">
+        <div class="component-icon" style="background:rgba(124,58,237,.15);color:#7C3AED">⚙️</div>
+        <h3>Simulacro 2 (SM2)</h3>
+        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Formulación y ejecución</p>
+        <p style="font-size:.85rem">10 preguntas · 20 minutos · Procedimientos y cálculo</p>
+        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar simulacro →</div>
+      </div>
+      <div class="component-card" style="border-left:5px solid #059669" onclick="iniciarSimulacroMat('sm3')">
+        <div class="component-icon" style="background:rgba(5,150,105,.15);color:#059669">💬</div>
+        <h3>Simulacro 3 (SM3)</h3>
+        <p style="font-weight:600;color:var(--dark);margin-bottom:.5rem">Argumentación</p>
+        <p style="font-size:.85rem">10 preguntas · 20 minutos · Validar y justificar</p>
+        <div style="margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--gray-light);font-size:.82rem;color:var(--primary);font-weight:600">🚀 Iniciar simulacro →</div>
       </div>
     </div>
   </div>
-
-  <!-- Vista del bloque en curso -->
-  <div class="quiz-section" id="log-quiz-section">
-    <button class="back-btn" onclick="confirmarSalirLog()">← Salir del bloque</button>
+  <div class="quiz-section" id="sim-mat-quiz-section">
+    <button class="back-btn" onclick="confirmarSalirSimMat()">← Salir del simulacro</button>
     <div class="quiz-header">
-      <div class="quiz-header-info">
-        <h3 id="log-title">Razonamiento Lógico</h3>
-        <p id="log-block-name"></p>
-      </div>
-      <div class="timer-display" id="log-timer-display">15:00</div>
+      <div class="quiz-header-info"><h3 id="sim-mat-title">Simulacro Matemáticas</h3><p id="sim-mat-competency-name"></p></div>
+      <div class="timer-display" id="sim-mat-timer-display">20:00</div>
       <div class="quiz-progress">
-        <div class="quiz-progress-text">
-          <span>Pregunta <span id="log-current-question">1</span> de 10</span>
-          <span id="log-answered-count">0 respondidas</span>
-        </div>
-        <div class="progress-bar-large"><div class="progress-fill-large" id="log-progress-fill" style="width:0%"></div></div>
+        <div class="quiz-progress-text"><span>Pregunta <span id="sim-mat-current-question">1</span> de 10</span><span id="sim-mat-answered-count">0 respondidas</span></div>
+        <div class="progress-bar-large"><div class="progress-fill-large" id="sim-mat-progress-fill" style="width:0%"></div></div>
       </div>
     </div>
-    <div class="warning-box">⏱️ <strong>Tiempo límite:</strong> 15 minutos · Puedes cambiar tu opción antes de pasar a la siguiente pregunta</div>
-    <div class="question-card" id="log-question-card">
-      <div class="question-meta" id="log-question-meta"></div>
-      <div class="question-context" id="log-question-context" style="display:none"></div>
-      <p class="question-text" id="log-question-text">Cargando...</p>
-      <div class="options-grid" id="log-options-container"></div>
+    <div class="warning-box">⏱️ <strong>Tiempo límite:</strong> 20 minutos · Puedes cambiar tu opción antes de pasar a la siguiente pregunta</div>
+    <div class="question-card" id="sim-mat-question-card">
+      <div class="question-meta" id="sim-mat-question-meta"></div>
+      <div class="question-context" id="sim-mat-question-context" style="display:none"></div>
+      <p class="question-text" id="sim-mat-question-text">Cargando...</p>
+      <div class="options-grid" id="sim-mat-options-container"></div>
     </div>
     <div class="quiz-actions">
-      <button class="btn btn-danger" onclick="confirmarSalirLog()">Salir</button>
-      <button class="btn btn-primary" id="log-next-btn" onclick="siguienteLog()" disabled>Siguiente →</button>
+      <button class="btn btn-danger" onclick="confirmarSalirSimMat()">Salir</button>
+      <button class="btn btn-primary" id="sim-mat-next-btn" onclick="siguienteSimMat()" disabled>Siguiente →</button>
     </div>
   </div>
-
-  <!-- Vista del resultado del bloque -->
-  <div class="results-card" id="log-results-section" style="background:linear-gradient(135deg,#7C2D12 0%,#BE185D 100%)">
-    <h2>🧩 ¡Bloque completado!</h2>
-    <div class="results-score" id="log-final-score">0%</div>
-    <p class="results-message" id="log-results-message"></p>
+  <div class="results-card" id="sim-mat-results-section" style="background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 100%)">
+    <h2>🔢 ¡Simulacro completado!</h2>
+    <div class="results-score" id="sim-mat-final-score">0%</div>
+    <p class="results-message" id="sim-mat-results-message"></p>
     <div class="results-feedback">
       <h3>📊 Tu desempeño</h3>
       <div class="feedback-stats">
-        <div class="feedback-stat"><div class="feedback-stat-value" id="log-feedback-correct">0</div><div class="feedback-stat-label">Correctas</div></div>
-        <div class="feedback-stat"><div class="feedback-stat-value" id="log-feedback-incorrect">0</div><div class="feedback-stat-label">Incorrectas</div></div>
-        <div class="feedback-stat"><div class="feedback-stat-value" id="log-feedback-time">00:00</div><div class="feedback-stat-label">Tiempo</div></div>
+        <div class="feedback-stat"><div class="feedback-stat-value" id="sim-mat-feedback-correct">0</div><div class="feedback-stat-label">Correctas</div></div>
+        <div class="feedback-stat"><div class="feedback-stat-value" id="sim-mat-feedback-incorrect">0</div><div class="feedback-stat-label">Incorrectas</div></div>
+        <div class="feedback-stat"><div class="feedback-stat-value" id="sim-mat-feedback-time">00:00</div><div class="feedback-stat-label">Tiempo</div></div>
       </div>
-      <div class="feedback-recommendation" id="log-feedback-rec" style="margin-top:1rem"></div>
-      <div id="log-tips-section" style="margin-top:1.25rem;background:rgba(255,255,255,.1);padding:1.25rem;border-radius:10px;border-left:4px solid #FBBF24">
-        <h4 style="margin-bottom:.75rem;font-size:1rem;font-weight:700">💡 Tips para Razonamiento Lógico</h4>
-        <ul id="log-tips-list" style="list-style:none;padding-left:0;font-size:.88rem;line-height:1.7"></ul>
+      <div class="feedback-recommendation" id="sim-mat-feedback-rec" style="margin-top:1rem"></div>
+      <div id="sim-mat-tips-section" style="margin-top:1.25rem;background:rgba(255,255,255,.1);padding:1.25rem;border-radius:10px;border-left:4px solid #FBBF24">
+        <h4 style="margin-bottom:.75rem;font-size:1rem;font-weight:700">💡 Tips para esta competencia</h4>
+        <ul id="sim-mat-tips-list" style="list-style:none;padding-left:0;font-size:.88rem;line-height:1.7"></ul>
       </div>
     </div>
     <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;position:relative;margin-top:1rem">
-      <button class="btn btn-outline" style="background:rgba(255,255,255,.15);color:white;border-color:rgba(255,255,255,.3)" onclick="volverALogico()">Volver a bloques</button>
+      <button class="btn btn-outline" style="background:rgba(255,255,255,.15);color:white;border-color:rgba(255,255,255,.3)" onclick="volverASimulacrsMat()">Volver a simulacros</button>
       <button class="btn btn-success" onclick="showPage('dashboard')">Ir a Mi Panel</button>
     </div>
   </div>
@@ -1879,6 +1878,8 @@ function showPage(page) {
     if (features) features.style.display = 'none';
     document.getElementById('dashboard-page').classList.remove('active');
     const simPage = document.getElementById('simulacros-page');
+    const simMatPage = document.getElementById('simulacros-mat-page');
+    if (simMatPage) simMatPage.classList.remove('active');
     if (simPage) simPage.classList.remove('active');
     const logPage = document.getElementById('logico-page');
     if (logPage) logPage.classList.remove('active');
@@ -1907,6 +1908,14 @@ function showPage(page) {
         document.getElementById('simulacros-list').style.display = 'block';
         document.getElementById('sim-quiz-section').classList.remove('active');
         document.getElementById('sim-results-section').classList.remove('active');
+    } else if (page === 'simulacros-mat') {
+        if (!currentUser) { openModal('login'); return; }
+        const smPage = document.getElementById('simulacros-mat-page');
+        if (smPage) smPage.classList.add('active');
+        document.getElementById('simulacros-mat-list').style.display = 'block';
+        document.getElementById('sim-mat-quiz-section').classList.remove('active');
+        document.getElementById('sim-mat-results-section').classList.remove('active');
+        if (typeof detenerTimerSimMat === 'function') detenerTimerSimMat();
     } else if (page === 'logico') {
         if (!currentUser) { openModal('login'); return; }
         if (logPage) logPage.classList.add('active');
@@ -2469,6 +2478,838 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ==================== SIMULACROS DE MATEMÁTICAS ====================
+// 5 simulacros × 10 preguntas = 50 preguntas oficiales ICFES Saber 11° Marzo 2026
+// Tiempo: 20 minutos por simulacro | Solo uso académico
+
+const SIMULACROS_MAT = {
+
+// ============================================================
+// SM1: Interpretación y representación
+// ============================================================
+sm1: {
+    nombre: 'Interpretación y representación',
+    descripcion: 'Comprende y transforma información en tablas, gráficas y distintos formatos.',
+    tiempo: 20,
+    preguntas: [
+        // P1 — tabla promedios cursos
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.9rem;text-align:center">
+<caption style="font-weight:700;margin-bottom:.5rem;font-size:.92rem">Promedios de los puntajes en el examen por cursos</caption>
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">Curso</th>
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">I</th>
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">II</th>
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">III</th>
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">IV</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem .75rem;border:1px solid #CBD5E1;font-weight:600">Promedio año anterior</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">63</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">61</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">50</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">53</td></tr>
+<tr><td style="padding:.5rem .75rem;border:1px solid #CBD5E1;font-weight:600">Promedio año actual</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">65</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">45</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">53</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">54</td></tr>
+</tbody></table></div>`,
+            context: "Cuatro cursos, cada uno con igual número de estudiantes, presentan anualmente una prueba de matemáticas. La tabla muestra el puntaje promedio obtenido por cada curso. Al revisar los puntajes de la tabla, una persona afirma que hubo un aumento en el puntaje respecto al año anterior.",
+            question: "Esta afirmación es:",
+            options: [
+                "Correcta, ya que el promedio de la mayoría de los cursos aumentó respecto al año anterior.",
+                "Incorrecta, ya que el promedio total en el año anterior es superior al promedio total en el año actual.",
+                "Correcta, ya que al observar todos los promedios, el mayor corresponde al curso I en el año actual.",
+                "Incorrecta, ya que se necesita el puntaje de cada estudiante para realizar la comparación."
+            ],
+            correct: 1
+        },
+
+        // P2 — inversión en dólares / tasa de cambio
+        {
+            context: "Una persona que vive en Colombia tiene inversiones en dólares en Estados Unidos, y sabe que la tasa de cambio del dólar respecto al peso colombiano se mantendrá constante este mes, siendo 1 dólar equivalente a 4.000 pesos colombianos y que su inversión, en dólares, le dará ganancias del 3 % en el mismo periodo. Un amigo le asegura que en pesos sus ganancias también serán del 3 %.",
+            question: "¿La afirmación de su amigo es correcta?",
+            options: [
+                "Sí, porque, sin importar las variaciones en la tasa de cambio, la proporción en que aumenta la inversión en dólares es la misma que en pesos.",
+                "No, porque debería conocerse el valor exacto de la inversión para poder calcular la cantidad de dinero que ganará.",
+                "Sí, porque el 3 % representa una proporción fija en cualquiera de las dos monedas, puesto que la tasa de cambio permanecerá constante.",
+                "No, porque el 3 % representa un incremento, que será mayor en pesos colombianos, pues en esta moneda cada dólar representa un valor 4.000 veces mayor."
+            ],
+            correct: 2
+        },
+
+        // P12 — gráfica costos transporte (basada en datos de la tabla W/Z con 7 ton W y 10 ton Z)
+        {
+            chart: `<div style="margin:.75rem 0;font-size:.85rem;color:#334155;background:#F8FAFC;padding:1rem;border-radius:8px;border:1px solid #E2E8F0">
+<p style="margin-bottom:.5rem"><strong>Contexto:</strong> Para transportar 7 toneladas a ciudad W y 10 toneladas a ciudad Z se usan camiones (cap. 5 ton c/u) con 2 trabajadores por camión.</p>
+<p style="margin-bottom:.5rem">Ciudad W: transporte/camión = $150.000 | pago/trabajador = $180.000</p>
+<p>Ciudad Z: transporte/camión = $180.000 | pago/trabajador = $200.000</p>
+</div>
+<svg viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <!-- Eje Y -->
+  <line x1="55" y1="20" x2="55" y2="210" stroke="#94A3B8" stroke-width="1"/>
+  <!-- Eje X -->
+  <line x1="55" y1="210" x2="460" y2="210" stroke="#94A3B8" stroke-width="1"/>
+  <!-- Líneas guía -->
+  <line x1="55" y1="50" x2="460" y2="50" stroke="#E2E8F0" stroke-width="0.5"/>
+  <line x1="55" y1="90" x2="460" y2="90" stroke="#E2E8F0" stroke-width="0.5"/>
+  <line x1="55" y1="130" x2="460" y2="130" stroke="#E2E8F0" stroke-width="0.5"/>
+  <line x1="55" y1="170" x2="460" y2="170" stroke="#E2E8F0" stroke-width="0.5"/>
+  <!-- Etiquetas Y -->
+  <text x="48" y="213" text-anchor="end" font-size="9" fill="#64748B">0</text>
+  <text x="48" y="173" text-anchor="end" font-size="9" fill="#64748B">100.000</text>
+  <text x="48" y="133" text-anchor="end" font-size="9" fill="#64748B">200.000</text>
+  <text x="48" y="93" text-anchor="end" font-size="9" fill="#64748B">300.000</text>
+  <text x="48" y="53" text-anchor="end" font-size="9" fill="#64748B">400.000</text>
+  <!-- Título Y -->
+  <text x="14" y="130" text-anchor="middle" font-size="9" fill="#64748B" transform="rotate(-90,14,130)">Costos en pesos</text>
+  <!-- Ciudad W: 2 camiones → transp=300.000, trabajadores=720.000 -->
+  <!-- Ciudad Z: 2 camiones → transp=360.000, trabajadores=800.000 -->
+  <!-- Opción B (correcta): escala hasta 900.000 -->
+  <!-- Barra transporte W (300.000) -->
+  <rect x="100" y="77" width="45" height="133" fill="#1E3A8A" opacity="0.85"/>
+  <!-- Barra trabajadores W (720.000) → escala proporcional a 900k max -->
+  <!-- Para opción B correcta mostramos valores ~proporcionales -->
+  <rect x="150" y="130" width="45" height="80" fill="#93C5FD" opacity="0.85"/>
+  <!-- Ciudad Z transporte (360.000) -->
+  <rect x="280" y="50" width="45" height="160" fill="#1E3A8A" opacity="0.85"/>
+  <!-- Ciudad Z trabajadores (800.000) escalado -->
+  <rect x="330" y="121" width="45" height="89" fill="#93C5FD" opacity="0.85"/>
+  <!-- Etiquetas X -->
+  <text x="147" y="225" text-anchor="middle" font-size="10" fill="#334155" font-weight="600">Ciudad W</text>
+  <text x="327" y="225" text-anchor="middle" font-size="10" fill="#334155" font-weight="600">Ciudad Z</text>
+  <!-- Leyenda -->
+  <rect x="370" y="30" width="12" height="12" fill="#1E3A8A"/>
+  <text x="386" y="41" font-size="9" fill="#334155">Costo transporte camiones</text>
+  <rect x="370" y="50" width="12" height="12" fill="#93C5FD"/>
+  <text x="386" y="61" font-size="9" fill="#334155">Costo pago trabajadores</text>
+</svg>`,
+            context: "Se transportan 7 toneladas de fruta a la ciudad W y 10 toneladas de fruta a la ciudad Z. Se usan camiones con capacidad de 5 toneladas cada uno, con 2 trabajadores por camión. Ciudad W: costo transporte/camión = $150.000, pago/trabajador = $180.000. Ciudad Z: costo transporte/camión = $180.000, pago/trabajador = $200.000.",
+            question: "¿Cuál es la gráfica que muestra correctamente la relación de costos por ciudad?",
+            options: [
+                "La barra de transporte de ciudad W es mayor que la de ciudad Z, y la barra de trabajadores de W es menor que la de Z.",
+                "La barra de transporte de ciudad Z es mayor que la de ciudad W, y la barra de trabajadores de Z es mayor que la de W.",
+                "Las barras de transporte y trabajadores son iguales en ambas ciudades.",
+                "La barra de trabajadores de ciudad W es mayor que la de ciudad Z."
+            ],
+            correct: 1
+        },
+
+        // P13 — comerciante, 100 ton mango, 50 banano, 10 trabajadores
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.88rem;text-align:center">
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem;border:1px solid #CBD5E1">Ciudad</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Venta ton. banano</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Venta ton. mango</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Costo transp./camión</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Pago trabajador/viaje</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">W</td><td style="padding:.5rem;border:1px solid #CBD5E1">$1.000.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$1.300.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$150.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$180.000</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">Z</td><td style="padding:.5rem;border:1px solid #CBD5E1">$1.200.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$1.350.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$180.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$200.000</td></tr>
+</tbody></table></div>`,
+            context: "Durante enero, el comerciante vendió 100 toneladas de mango y 50 de banano, y contrató 10 trabajadores. Cada camión tiene capacidad de 5 toneladas y necesita 2 trabajadores por viaje.",
+            question: "¿Qué se puede determinar con esta información?",
+            options: [
+                "La ganancia de los productores.",
+                "El pago que recibirá cada trabajador en enero.",
+                "Los costos totales del comerciante.",
+                "El número mínimo de viajes que se realizaron desde el pueblo."
+            ],
+            correct: 3
+        },
+
+        // P20 — función ganancia publicidad
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.9rem;text-align:center">
+<caption style="font-weight:700;margin-bottom:.5rem">Gasto en publicidad y ganancias (millones de pesos)</caption>
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">Año</th>
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">Gasto en publicidad*</th>
+<th style="padding:.5rem .75rem;border:1px solid #CBD5E1">Ganancia obtenida*</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">2020</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">200</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">8.000</td></tr>
+<tr><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">2021</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">280</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">10.400</td></tr>
+<tr style="background:#F8FAFC"><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">2022</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">250</td><td style="padding:.5rem .75rem;border:1px solid #CBD5E1">9.500</td></tr>
+</tbody>
+<tfoot><tr><td colspan="3" style="padding:.3rem;font-size:.78rem;color:#64748B">*Datos en millones de pesos.</td></tr></tfoot>
+</table></div>`,
+            context: "La tabla presenta la información sobre el gasto en publicidad y las ganancias de una empresa durante los años 2020 a 2022.",
+            question: "¿Cuál es la función que representa la ganancia obtenida G, en millones de pesos, en función del gasto en publicidad p?",
+            options: [
+                "G(p) = 30p + 2.000",
+                "G(p) = 10p",
+                "G(p) = 40p",
+                "G(p) = 40p − 800"
+            ],
+            correct: 0
+        },
+
+        // P26 — gráfico pastel transporte intermunicipal
+        {
+            chart: `<svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0;padding:.5rem">
+  <text x="130" y="16" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">TRANSPORTE INTERMUNICIPAL DE PASAJEROS</text>
+  <!-- Pastel aproximado con los % del PDF -->
+  <!-- Buseta 18%, Automóvil 18%, Camioneta 24%, Campero 7%, Bus escalera 1%, Bus 9%, Microbús 23% -->
+  <!-- Centro del pastel -->
+  <!-- Buseta 18% → 64.8° -->
+  <path d="M130,110 L130,40 A70,70 0 0,1 194,75 Z" fill="#1E3A8A"/>
+  <!-- Automóvil 18% → 64.8° -->
+  <path d="M130,110 L194,75 A70,70 0 0,1 185,178 Z" fill="#3B82F6"/>
+  <!-- Camioneta 24% → 86.4° -->
+  <path d="M130,110 L185,178 A70,70 0 0,1 67,174 Z" fill="#93C5FD"/>
+  <!-- Campero 7% → 25.2° -->
+  <path d="M130,110 L67,174 A70,70 0 0,1 62,127 Z" fill="#FCD34D"/>
+  <!-- Bus escalera 1% → 3.6° -->
+  <path d="M130,110 L62,127 A70,70 0 0,1 61,120 Z" fill="#6B7280"/>
+  <!-- Bus 9% → 32.4° -->
+  <path d="M130,110 L61,120 A70,70 0 0,1 66,84 Z" fill="#F97316"/>
+  <!-- Microbús 23% → el resto hasta 360° -->
+  <path d="M130,110 L66,84 A70,70 0 0,1 130,40 Z" fill="#10B981"/>
+  <!-- Etiquetas de porcentaje -->
+  <text x="158" y="62" font-size="9" fill="white" font-weight="700">18%</text>
+  <text x="175" y="130" font-size="9" fill="white" font-weight="700">18%</text>
+  <text x="115" y="165" font-size="9" fill="#0F172A" font-weight="700">24%</text>
+  <text x="60" y="155" font-size="9" fill="#0F172A" font-weight="700">7%</text>
+  <text x="44" y="122" font-size="8" fill="#0F172A">1%</text>
+  <text x="56" y="98" font-size="9" fill="#0F172A" font-weight="700">9%</text>
+  <text x="74" y="68" font-size="9" fill="#0F172A" font-weight="700">23%</text>
+  <!-- Leyenda -->
+  <rect x="225" y="30" width="11" height="11" fill="#1E3A8A"/><text x="240" y="40" font-size="9" fill="#334155">Buseta (18%)</text>
+  <rect x="225" y="48" width="11" height="11" fill="#3B82F6"/><text x="240" y="58" font-size="9" fill="#334155">Automóvil (18%)</text>
+  <rect x="225" y="66" width="11" height="11" fill="#93C5FD"/><text x="240" y="76" font-size="9" fill="#334155">Camioneta (24%)</text>
+  <rect x="225" y="84" width="11" height="11" fill="#FCD34D"/><text x="240" y="94" font-size="9" fill="#334155">Campero (7%)</text>
+  <rect x="225" y="102" width="11" height="11" fill="#6B7280"/><text x="240" y="112" font-size="9" fill="#334155">Bus escalera (1%)</text>
+  <rect x="225" y="120" width="11" height="11" fill="#F97316"/><text x="240" y="130" font-size="9" fill="#334155">Bus (9%)</text>
+  <rect x="225" y="138" width="11" height="11" fill="#10B981"/><text x="240" y="148" font-size="9" fill="#334155">Microbús (23%)</text>
+  <text x="130" y="205" text-anchor="middle" font-size="8" fill="#94A3B8">Tomado de: Superintendencia de Puertos y Transporte (2009).</text>
+</svg>`,
+            context: "A continuación, se muestran los resultados de una encuesta que indagó sobre el parque automotor del transporte intermunicipal en Colombia. Los porcentajes son: Buseta 18%, Automóvil 18%, Camioneta 24%, Campero 7%, Bus escalera 1%, Bus 9%, Microbús 23%.",
+            question: "Según la información anterior, ¿cuál de las siguientes afirmaciones es verdadera?",
+            options: [
+                "La mayor parte del parque automotor son automóviles, camionetas y camperos.",
+                "La mitad del parque automotor corresponde a automóviles, camionetas y camperos.",
+                "La mayor parte del parque automotor son buses, microbuses y busetas.",
+                "La mitad del parque automotor corresponde a buses, microbuses y busetas."
+            ],
+            correct: 2
+        },
+
+        // P28 — probabilidad mujeres grado 11
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.9rem;text-align:center">
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem;border:1px solid #CBD5E1"></th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Curso 11A</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Curso 11B</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Total</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:600;text-align:left">Número de mujeres</td><td style="padding:.5rem;border:1px solid #CBD5E1">22</td><td style="padding:.5rem;border:1px solid #CBD5E1">23</td><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:700">45</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:600;text-align:left">Número de hombres</td><td style="padding:.5rem;border:1px solid #CBD5E1">18</td><td style="padding:.5rem;border:1px solid #CBD5E1">12</td><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:700">30</td></tr>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:700;text-align:left">Total</td><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:700">40</td><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:700">35</td><td style="padding:.5rem;border:1px solid #CBD5E1;font-weight:700">75</td></tr>
+</tbody></table></div>`,
+            context: "En una institución educativa hay dos cursos en grado undécimo. El número de hombres y mujeres de cada curso se relaciona en la tabla. La probabilidad de escoger un estudiante de grado undécimo, de esta institución, que sea mujer es de 3/5. Si se sabe que uno de los valores de esta razón es el número total de mujeres (45), ¿cuál es el otro valor?",
+            question: "¿Cuál es el otro valor de la razón 3/5?",
+            options: [
+                "El número total de estudiantes de grado undécimo.",
+                "El número total de hombres de grado undécimo.",
+                "El número total de mujeres del curso 11 B.",
+                "El número total de hombres del curso 11 A."
+            ],
+            correct: 0
+        },
+
+        // P33 — tabla transporte empleados (60% mujeres, 20% mujeres en bus, 40% hombres caminando)
+        {
+            context: "En una fábrica se aplica una encuesta a los empleados para saber el medio de transporte que usan para llegar al trabajo. Los resultados sobre un grupo de 100 empleados que viven cerca de la fábrica y que se desplazan únicamente en bus o a pie mostraron: El 60% del grupo son mujeres. El 20% de las mujeres se desplazan en bus. El 40% de los hombres se desplazan caminando.",
+            question: "¿Cuál de las siguientes tablas representa correctamente la información? (Hombre | Mujer)",
+            options: [
+                "En bus: 40 | 60 · Caminando: 60 | 40",
+                "En bus: 34 | 12 · Caminando: 16 | 38",
+                "En bus: 0 | 20 · Caminando: 40 | 40",
+                "En bus: 24 | 12 · Caminando: 16 | 48"
+            ],
+            correct: 3
+        },
+
+        // P38 — pizzería (conjuntos)
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.9rem">
+<thead><tr style="background:#1E3A8A;color:white"><th style="padding:.5rem;border:1px solid #CBD5E1">Categoría</th><th style="padding:.5rem;border:1px solid #CBD5E1;text-align:center">Cantidad</th></tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">Clientes que eligieron bebida caliente</td><td style="padding:.5rem;border:1px solid #CBD5E1;text-align:center">20</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">Clientes que eligieron bebida fría</td><td style="padding:.5rem;border:1px solid #CBD5E1;text-align:center">40</td></tr>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">Clientes que eligieron pizza</td><td style="padding:.5rem;border:1px solid #CBD5E1;text-align:center">100</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">Clientes que eligieron bebida caliente <strong>y</strong> bebida fría</td><td style="padding:.5rem;border:1px solid #CBD5E1;text-align:center">0</td></tr>
+</tbody></table></div>`,
+            context: "Carolina administra una pizzería y registró en una tabla la información correspondiente a los pedidos realizados por los 110 clientes que entraron a la pizzería el domingo.",
+            question: "Con la información de la tabla, ¿cuáles de los siguientes datos se pueden calcular?",
+            options: [
+                "El total de clientes que eligieron pizza y también bebida caliente.",
+                "El total de clientes que eligieron pizza o bebida caliente.",
+                "El total de clientes que solo eligieron pizza.",
+                "El total de clientes que solo eligieron bebida fría."
+            ],
+            correct: 2
+        },
+
+        // P43 — función f(x) = 5/x y área Ax = xf(x)
+        {
+            chart: `<svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <text x="140" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">f(x) = 5/x  (x &gt; 0)</text>
+  <!-- Ejes -->
+  <line x1="30" y1="170" x2="260" y2="170" stroke="#0F172A" stroke-width="1.5"/>
+  <line x1="30" y1="20" x2="30" y2="170" stroke="#0F172A" stroke-width="1.5"/>
+  <!-- Etiquetas eje X -->
+  <text x="60" y="182" text-anchor="middle" font-size="8" fill="#64748B">1</text>
+  <text x="90" y="182" text-anchor="middle" font-size="8" fill="#64748B">2</text>
+  <text x="120" y="182" text-anchor="middle" font-size="8" fill="#64748B">3</text>
+  <text x="150" y="182" text-anchor="middle" font-size="8" fill="#64748B">4</text>
+  <text x="180" y="182" text-anchor="middle" font-size="8" fill="#64748B">5</text>
+  <text x="210" y="182" text-anchor="middle" font-size="8" fill="#64748B">6</text>
+  <text x="240" y="182" text-anchor="middle" font-size="8" fill="#64748B">7</text>
+  <!-- Etiquetas eje Y -->
+  <text x="25" y="135" text-anchor="end" font-size="8" fill="#64748B">2</text>
+  <text x="25" y="110" text-anchor="end" font-size="8" fill="#64748B">3</text>
+  <text x="25" y="85" text-anchor="end" font-size="8" fill="#64748B">4</text>
+  <text x="25" y="60" text-anchor="end" font-size="8" fill="#64748B">5</text>
+  <text x="25" y="35" text-anchor="end" font-size="8" fill="#64748B">6</text>
+  <!-- Curva f(x)=5/x hipérbola -->
+  <path d="M 60,120 Q 70,103 90,85 Q 110,72 120,60 Q 140,50 150,53 Q 170,55 180,58 Q 200,61 210,63 Q 230,66 240,68" stroke="#2563EB" stroke-width="2" fill="none"/>
+  <!-- Rectángulo sombreado (ejemplo con x=1..2) -->
+  <rect x="60" y="120" width="30" height="50" fill="#BFDBFE" opacity="0.6" stroke="#2563EB" stroke-width="1"/>
+  <!-- Etiquetas -->
+  <text x="255" y="170" font-size="9" fill="#0F172A">x</text>
+  <text x="30" y="16" font-size="9" fill="#0F172A">y</text>
+  <text x="65" y="108" font-size="8" fill="#2563EB">f</text>
+</svg>
+<p style="font-size:.82rem;color:#64748B;text-align:center;margin:.3rem 0">Ax = x·f(x) = x·(5/x) = 5 para todo x &gt; 0</p>`,
+            context: "El área de los rectángulos que se pueden construir a partir del origen, los ejes y un punto que pertenece a la gráfica de la función f(x) = 5/x, donde x > 0, se describe con la expresión Ax = xf(x).",
+            question: "¿Cuál de las siguientes descripciones corresponde a la gráfica de Ax?",
+            options: [
+                "Una recta creciente que pasa por el origen.",
+                "Una línea horizontal constante (Ax = 5 para todo x > 0).",
+                "Una parábola creciente.",
+                "Una curva decreciente similar a la hipérbola original."
+            ],
+            correct: 1
+        }
+    ],
+    retroalimentacion: {
+        alta: 'Excelente desempeño. Interpretas con precisión tablas, gráficas y datos matemáticos en distintos formatos. Esto refleja un dominio sólido de la competencia de Interpretación y representación del ICFES.',
+        media: 'Buen nivel. Lees correctamente la mayoría de los datos, pero en algunos casos complejos (funciones, conjuntos, gráficas circulares) puedes mejorar tu análisis. Practica identificando la información clave antes de responder.',
+        baja: 'Necesitas reforzar esta competencia. Practica leer tablas paso a paso: primero identifica qué variable está en cada fila/columna, luego extrae solo los datos que la pregunta pide. No asumas relaciones que no están en los datos.'
+    },
+    tips: [
+        'En tablas de doble entrada, lee primero los encabezados antes de buscar el dato. Muchos errores vienen de confundir filas con columnas.',
+        'En gráficas circulares (pastel), suma los porcentajes de las categorías que menciona cada opción antes de decidir.',
+        'Cuando veas una función matemática, evalúa con 2 o 3 valores concretos para identificar su comportamiento (constante, creciente, decreciente).',
+        'En problemas de probabilidad con tablas, la razón a/b significa: a casos favorables de b posibles totales.',
+        'Si la pregunta dice "¿qué se puede determinar?", identifica qué datos faltan para cada opción. La correcta es aquella que puede calcularse SOLO con la información dada.',
+        'En conjuntos (pizza/bebidas), recuerda: "y" significa intersección; "o" significa unión. Aplica la fórmula: |A∪B| = |A| + |B| − |A∩B|.',
+        'Ante una gráfica con múltiples opciones, primero descarta las que claramente tienen valores incorrectos, luego compara las restantes con el cálculo exacto.'
+    ]
+},
+
+// ============================================================
+// SM2: Formulación y ejecución
+// ============================================================
+sm2: {
+    nombre: 'Formulación y ejecución',
+    descripcion: 'Plantea estrategias de solución y las ejecuta correctamente en problemas matemáticos.',
+    tiempo: 20,
+    preguntas: [
+        // P3 — viaje museo, 140 estudiantes, franjas
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.88rem;text-align:center">
+<caption style="font-weight:700;margin-bottom:.5rem">Franjas disponibles para visita al museo</caption>
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem;border:1px solid #CBD5E1">Franja</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Horario</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Cantidad máxima</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Precio/estudiante</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">1</td><td style="padding:.5rem;border:1px solid #CBD5E1">8:00 - 10:00</td><td style="padding:.5rem;border:1px solid #CBD5E1">50</td><td style="padding:.5rem;border:1px solid #CBD5E1">$35.000</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">2</td><td style="padding:.5rem;border:1px solid #CBD5E1">10:00 - 12:00</td><td style="padding:.5rem;border:1px solid #CBD5E1">40</td><td style="padding:.5rem;border:1px solid #CBD5E1">$40.000</td></tr>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">3</td><td style="padding:.5rem;border:1px solid #CBD5E1">12:00 - 14:00</td><td style="padding:.5rem;border:1px solid #CBD5E1">30</td><td style="padding:.5rem;border:1px solid #CBD5E1">$50.000</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">4</td><td style="padding:.5rem;border:1px solid #CBD5E1">14:00 - 16:00</td><td style="padding:.5rem;border:1px solid #CBD5E1">60</td><td style="padding:.5rem;border:1px solid #CBD5E1">$45.000</td></tr>
+</tbody></table></div>`,
+            context: "Las directivas de un colegio tienen que organizar un viaje a un museo con 140 estudiantes, quienes deben dividirse en 3 grupos. Cada grupo irá en una franja diferente, pero el costo total de las entradas se asumirá equitativamente por los estudiantes. Las directivas eligieron las franjas 1, 3 y 4.",
+            question: "¿Esta elección garantiza que asistan todos los estudiantes al menor precio posible?",
+            options: [
+                "Sí, porque esas franjas suman exactamente 140 estudiantes.",
+                "No, porque es posible obtener un precio menor eligiendo la franja 2 en lugar de la franja 3.",
+                "Sí, porque se incluyó la franja 1 que es la de menor precio por estudiante.",
+                "No, porque en la franja 3 la cantidad máxima de estudiantes es 30."
+            ],
+            correct: 1
+        },
+
+        // P4 — capacitación módulo I, $4.200.000
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.88rem;text-align:center">
+<caption style="font-weight:700;margin-bottom:.5rem">Capacitación en informática básica</caption>
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem;border:1px solid #CBD5E1">Módulo</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Nombre</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Horas</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Valor/hora</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">I</td><td style="padding:.5rem;border:1px solid #CBD5E1">Fundamentación</td><td style="padding:.5rem;border:1px solid #CBD5E1">40 h</td><td style="padding:.5rem;border:1px solid #CBD5E1">$35.000</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">II</td><td style="padding:.5rem;border:1px solid #CBD5E1">Procesador de texto</td><td style="padding:.5rem;border:1px solid #CBD5E1">30 h</td><td style="padding:.5rem;border:1px solid #CBD5E1">$30.000</td></tr>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">III</td><td style="padding:.5rem;border:1px solid #CBD5E1">Hoja de cálculo</td><td style="padding:.5rem;border:1px solid #CBD5E1">40 h</td><td style="padding:.5rem;border:1px solid #CBD5E1">$40.000</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">IV</td><td style="padding:.5rem;border:1px solid #CBD5E1">Presentación</td><td style="padding:.5rem;border:1px solid #CBD5E1">10 h</td><td style="padding:.5rem;border:1px solid #CBD5E1">$45.000</td></tr>
+</tbody></table>
+<p style="font-size:.8rem;color:#64748B;margin-top:.4rem;text-align:center">La capacitación de cada módulo se hace con cursos de mínimo 20 y máximo 30 personas.</p></div>`,
+            context: "La empresa pagará $4.200.000 por capacitar a los trabajadores de la dependencia 'Insumos' en el módulo I (40h × $35.000/h = $1.400.000 por curso de max. 30 personas).",
+            question: "¿Cuántos empleados tiene esta dependencia?",
+            options: [
+                "Entre 20 y 30 trabajadores.",
+                "Entre 41 y 60 trabajadores.",
+                "Entre 61 y 90 trabajadores.",
+                "Entre 80 y 120 trabajadores."
+            ],
+            correct: 2
+        },
+
+        // P5 — capacitación módulo II, 50 trabajadores RR.HH.
+        {
+            chart: `<div style="background:#EFF6FF;border-radius:8px;padding:.85rem 1rem;margin:.75rem 0;font-size:.9rem;border:1px solid #BFDBFE">
+<p><strong>Módulo II — Procesador de texto:</strong> 30 horas × $30.000/hora = <strong>$900.000 por curso</strong></p>
+<p style="margin-top:.4rem"><strong>Dependencia "Recursos Humanos":</strong> 50 trabajadores</p>
+<p style="margin-top:.4rem"><strong>Regla:</strong> Cursos de mínimo 20 y máximo 30 personas</p>
+</div>`,
+            context: "Si se les cobrara a los 50 trabajadores de la dependencia 'Recursos Humanos' la capacitación del módulo II, y todos pagaran el mismo valor, ¿cuánto debería pagar cada uno por esa capacitación?",
+            question: "¿Cuánto debe pagar cada trabajador?",
+            options: [
+                "$ 18.000",
+                "$ 36.000",
+                "$ 450.000",
+                "$ 900.000"
+            ],
+            correct: 1
+        },
+
+        // P6 — módulo "Importaciones" 40 funcionarios $900.000
+        {
+            chart: `<div style="background:#EFF6FF;border-radius:8px;padding:.85rem 1rem;margin:.75rem 0;font-size:.9rem;border:1px solid #BFDBFE">
+<p><strong>Costos totales por módulo (para 40 funcionarios en 2 cursos máx. 30 c/u):</strong></p>
+<ul style="margin-top:.4rem;padding-left:1.2rem">
+<li>Módulo I: 40h × $35.000 × (40/30 redondeado) → $2.800.000</li>
+<li>Módulo II: 30h × $30.000 × cursos → análisis</li>
+<li>Módulo III: 40h × $40.000 × cursos → análisis</li>
+<li>Módulo IV: 10h × $45.000 × cursos → análisis</li>
+</ul>
+</div>`,
+            context: "La empresa paga $900.000 por la capacitación de los 40 funcionarios de la dependencia 'Importaciones'. De acuerdo con el valor pagado, ¿cuál de los siguientes módulos corresponde al tomado por la dependencia 'Importaciones'?",
+            question: "¿Cuál módulo tomó la dependencia 'Importaciones'?",
+            options: [
+                "I",
+                "II",
+                "III",
+                "IV"
+            ],
+            correct: 3
+        },
+
+        // P8 — montañistas, temperatura vs altitud
+        {
+            chart: `<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <text x="150" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Temperatura vs. Altitud</text>
+  <!-- Ejes -->
+  <line x1="50" y1="170" x2="270" y2="170" stroke="#0F172A" stroke-width="1.5"/>
+  <line x1="50" y1="20" x2="50" y2="170" stroke="#0F172A" stroke-width="1.5"/>
+  <!-- Línea de temperatura (decrece con altitud) -->
+  <line x1="70" y1="140" x2="250" y2="50" stroke="#EF4444" stroke-width="2.5"/>
+  <!-- Puntos clave -->
+  <circle cx="70" cy="140" r="4" fill="#2563EB"/>
+  <text x="72" y="136" font-size="8" fill="#2563EB">1000m, 20°C</text>
+  <circle cx="160" cy="95" r="4" fill="#2563EB"/>
+  <text x="162" y="91" font-size="8" fill="#2563EB">2000m, 10°C</text>
+  <circle cx="250" cy="50" r="4" fill="#EF4444"/>
+  <text x="230" y="44" font-size="8" fill="#EF4444">4000m, ?°C</text>
+  <!-- Etiquetas eje X -->
+  <text x="70" y="182" text-anchor="middle" font-size="8" fill="#64748B">1000</text>
+  <text x="115" y="182" text-anchor="middle" font-size="8" fill="#64748B">2000</text>
+  <text x="160" y="182" text-anchor="middle" font-size="8" fill="#64748B">3000</text>
+  <text x="205" y="182" text-anchor="middle" font-size="8" fill="#64748B">4000</text>
+  <!-- Etiquetas eje Y -->
+  <text x="44" y="143" text-anchor="end" font-size="8" fill="#64748B">20°C</text>
+  <text x="44" y="98" text-anchor="end" font-size="8" fill="#64748B">10°C</text>
+  <text x="44" y="53" text-anchor="end" font-size="8" fill="#64748B">0°C</text>
+  <!-- Etiquetas ejes -->
+  <text x="160" y="195" text-anchor="middle" font-size="8" fill="#64748B">Altitud (m)</text>
+  <text x="14" y="100" text-anchor="middle" font-size="8" fill="#64748B" transform="rotate(-90,14,100)">Temp (°C)</text>
+</svg>`,
+            context: "Un grupo de montañistas sabe que cada vez que aumenta la altitud en 100 m, la temperatura disminuye en 1 °C. Si el grupo se encuentra a una altitud de 1.000 m, donde la temperatura es de 20 °C.",
+            question: "¿Cuál de las siguientes expresiones les permite determinar la temperatura cuando se encuentren a 4.000 m de altitud?",
+            options: [
+                "Temperatura = (Altitud/100) + 10",
+                "Temperatura = −Altitud × 100 + 30",
+                "Temperatura = −(Altitud/100) + 30",
+                "Temperatura = Altitud × 100 + 10"
+            ],
+            correct: 2
+        },
+
+        // P10 — ganancia comerciante 15 ton banano ciudad W
+        {
+            chart: `<div style="background:#EFF6FF;border-radius:8px;padding:.85rem 1rem;margin:.75rem 0;font-size:.88rem;border:1px solid #BFDBFE">
+<p><strong>Datos:</strong> 3 camiones × 5 ton/camión = 15 ton banano → Ciudad W</p>
+<p style="margin-top:.3rem">Precio venta banano W = $1.000.000/ton | Precio compra = $400.000/ton</p>
+<p style="margin-top:.3rem">Costo transporte/camión W = $150.000 | Pago/trabajador/viaje W = $180.000</p>
+<p style="margin-top:.3rem">2 trabajadores/camión × 3 camiones = 6 trabajadores</p>
+</div>`,
+            context: "Los tres camiones se cargan con 5 toneladas de banano cada uno para venderse en la ciudad W. El comerciante aplica el siguiente procedimiento: Paso 1: halla las toneladas totales. Paso 2: diferencia precio venta − precio compra. Paso 3: multiplica pasos 1 y 2. Paso 4: costos totales transporte + pago total trabajadores. Paso 5: diferencia paso 3 − paso 4.",
+            question: "¿Cuál es la ganancia que obtiene el comerciante?",
+            options: [
+                "$ 5.670.000",
+                "$ 5.970.000",
+                "$ 7.470.000",
+                "$ 8.010.000"
+            ],
+            correct: 1
+        },
+
+        // P11 — bono empleados 47 ton mango ciudad W
+        {
+            context: "Para diciembre, por cada 5 toneladas vendidas, cada uno de los dos empleados por camión recibirá un bono de 0,3% del dinero de esas 5 toneladas. Dos empleados transportaron y vendieron 47 toneladas de mango a la ciudad W (precio venta = $1.300.000/ton). Procedimiento: Paso 1: 47÷5, residuo. Paso 2: 47 − residuo = toneladas que generan bono. Paso 3: × precio venta. Paso 4: sacar 0,3%.",
+            question: "¿De qué valor fue, aproximadamente, el bono recibido por cada empleado?",
+            options: [
+                "526.000 pesos.",
+                "175.000 pesos.",
+                "148.000 pesos.",
+                "87.000 pesos."
+            ],
+            correct: 1
+        },
+
+        // P22 — corte triángulo sen(45°) = h/120
+        {
+            chart: `<svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <text x="140" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Triángulo con corte paralelo a la base</text>
+  <!-- Triángulo principal -->
+  <polygon points="140,30 30,170 250,170" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+  <!-- Corte (línea punteada a la mitad de la altura) -->
+  <line x1="85" y1="100" x2="195" y2="100" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,4"/>
+  <!-- Altura h -->
+  <line x1="140" y1="30" x2="140" y2="170" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <!-- Ángulo 45° -->
+  <path d="M 55,170 A 25,25 0 0,1 70,148" stroke="#D97706" stroke-width="1.5" fill="none"/>
+  <text x="58" y="162" font-size="9" fill="#D97706">45°</text>
+  <!-- Medida del lado -->
+  <text x="80" y="178" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="600">120 cm</text>
+  <!-- Altura -->
+  <text x="148" y="105" font-size="9" fill="#EF4444">h/2</text>
+  <text x="148" y="80" font-size="9" fill="#94A3B8">h/2</text>
+  <!-- Etiqueta h total -->
+  <text x="158" y="105" font-size="9" fill="#64748B">h</text>
+  <!-- Flecha altura -->
+  <line x1="155" y1="30" x2="155" y2="170" stroke="#64748B" stroke-width="1"/>
+</svg>`,
+            context: "La línea punteada muestra un corte realizado a un triángulo, paralelo a la base, que corta por la mitad la altura h (perpendicular a la base). Se determinó h usando sen(45°) = h/120. Luego se dividió h entre 2. Sen(45°) = √2/2 ≈ 0,71.",
+            question: "¿Cuál fue, aproximadamente, la distancia a la que se cortó la altura del triángulo?",
+            options: [
+                "85 cm.",
+                "60 cm.",
+                "42 cm.",
+                "30 cm."
+            ],
+            correct: 2
+        },
+
+        // P35 — descuento doble librería (error en procedimiento de Juan)
+        {
+            context: "En una librería se ofrece un descuento del 10% sobre el precio original. Juan tiene un cupón adicional del 10% sobre el precio de venta (que ya incluye el primer descuento). Para un libro de $50, Juan hace: Paso 1: multiplica el precio por 9. Paso 2: divide entre 10. Paso 3: multiplica el resultado por 10. Paso 4: divide entre 100.",
+            question: "¿En cuál paso del procedimiento hay un error?",
+            options: [
+                "En el paso 1, porque el precio de venta es el 90% del precio original, por tanto, debe multiplicarse por 90 y no por 9.",
+                "En el paso 3, porque el precio final es el 90% del precio de venta, por tanto, debe multiplicarse por 90 y no por 10.",
+                "En el paso 2, porque para calcular el precio al aplicar un porcentaje de descuento es necesario dividir entre 100 y no entre 10.",
+                "En el paso 4, porque solo es necesario dividir una vez para calcular el precio final; es suficiente con la división del paso 2."
+            ],
+            correct: 1
+        },
+
+        // P44 — rueda giratoria sector circular
+        {
+            chart: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <text x="140" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Rueda giratoria — 10 sectores iguales</text>
+  <!-- Círculo principal -->
+  <circle cx="140" cy="100" r="65" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+  <!-- 10 líneas divisorias cada 36° -->
+  <line x1="140" y1="35" x2="140" y2="100" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="201" y2="70" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="205" y2="135" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="165" y2="162" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="115" y2="162" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="75" y2="135" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="79" y2="70" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="100" y2="43" stroke="#2563EB" stroke-width="1.5"/>
+  <line x1="140" y1="100" x2="180" y2="43" stroke="#2563EB" stroke-width="1.5"/>
+  <!-- θ etiqueta -->
+  <path d="M 140,100 L 156,69 A 20,20 0 0,0 140,80 Z" fill="#FCD34D" opacity="0.7"/>
+  <text x="152" y="88" font-size="9" fill="#D97706" font-weight="700">θ</text>
+  <!-- Radio -->
+  <line x1="140" y1="100" x2="140" y2="35" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="145" y="68" font-size="9" fill="#EF4444">r = 3m</text>
+  <!-- Fórmula -->
+  <text x="140" y="172" text-anchor="middle" font-size="9" fill="#64748B">S = r² · θ/2  (π ≈ 3)</text>
+</svg>`,
+            context: "En un parque hay una rueda giratoria de 3 m de radio, diseñada para 10 personas, cada una en un sector circular de igual área. Para determinar el área por persona: se divide 2π entre 10 para hallar θ de cada sector, y se usa S = r²·(θ/2). Con π ≈ 3.",
+            question: "¿Cuál es el área aproximada que le corresponde a cada persona?",
+            options: [
+                "3,6 m²",
+                "2,7 m²",
+                "9,0 m²",
+                "1,8 m²"
+            ],
+            correct: 1
+        }
+    ],
+    retroalimentacion: {
+        alta: 'Excelente desempeño. Formulas bien los procedimientos y los ejecutas correctamente, incluso en situaciones que requieren varios pasos encadenados. Tu capacidad para traducir problemas de texto a operaciones matemáticas está muy bien desarrollada.',
+        media: 'Buen nivel. Identificas el procedimiento general, pero en algunos pasos intermedios (como el manejo de porcentajes dobles o la identificación del error en un algoritmo) puedes mejorar. Practica verificando cada paso de tu solución.',
+        baja: 'Necesitas reforzar esta competencia. Cuando enfrentes un problema de varios pasos, escribe primero qué datos tienes, qué te piden, y qué operación conecta cada paso. No saltes directamente a calcular sin un plan.'
+    },
+    tips: [
+        'En problemas de varios pasos, lee el procedimiento completo antes de calcular. Identifica qué produce cada paso antes de ejecutarlo.',
+        'En porcentajes: "el 90% de X" se calcula como X × 0,9 (o X × 9/10). Nunca como X × 90 sin dividir.',
+        'En problemas de capacidad (camiones, cursos): identifica cuántos grupos hacen falta dividiendo el total entre la capacidad máxima.',
+        'Para identificar el error en un procedimiento: ejecuta tú mismo los pasos correctamente y compara con lo que hizo el personaje del problema.',
+        'En fórmulas con variables (temperatura, interés, área): sustituye un valor concreto conocido para verificar cuál opción da el resultado correcto.',
+        'En problemas de bonos o porcentajes escalonados: aplica cada porcentaje sobre el valor ya modificado, no sobre el original.',
+        'Lee con cuidado si la pregunta pide el valor total, el valor por persona, el costo o la ganancia. Confundir estas cantidades lleva a errores frecuentes.'
+    ]
+},
+
+// ============================================================
+// SM3: Argumentación
+// ============================================================
+sm3: {
+    nombre: 'Argumentación',
+    descripcion: 'Justifica, valida o refuta conclusiones, estrategias y procedimientos matemáticos.',
+    tiempo: 20,
+    preguntas: [
+        // P7 — portalápices, perímetros 18/24, áreas
+        {
+            chart: `<svg viewBox="0 0 280 170" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <text x="140" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Portalápices: base y boca cuadradas</text>
+  <!-- Trapecio como vista del portalápices -->
+  <polygon points="70,140 210,140 185,50 95,50" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+  <!-- Etiquetas -->
+  <text x="140" y="155" text-anchor="middle" font-size="10" fill="#0F172A" font-weight="600">Base: P = 18 cm</text>
+  <text x="140" y="44" text-anchor="middle" font-size="10" fill="#EA580C" font-weight="600">Boca: P = 24 cm</text>
+  <!-- Caucho base -->
+  <rect x="68" y="138" width="144" height="5" fill="#10B981" opacity="0.7" rx="2"/>
+  <text x="212" y="143" font-size="8" fill="#10B981">caucho sin estirar</text>
+  <!-- Caucho boca -->
+  <rect x="93" y="48" width="94" height="5" fill="#EA580C" opacity="0.7" rx="2"/>
+  <text x="192" y="52" font-size="8" fill="#EA580C">caucho estirado</text>
+  <!-- Relación -->
+  <text x="140" y="100" text-anchor="middle" font-size="11" fill="#2563EB" font-weight="700">18/24 = 3/4</text>
+  <text x="140" y="116" text-anchor="middle" font-size="9" fill="#64748B">¿El área de la base = 3/4 del área de la boca?</text>
+</svg>`,
+            context: "La figura muestra el portalápices de Eliécer. El caucho tiene perímetro 18 cm en la base y 24 cm en la boca. El portalápices tiene base y boca cuadrada. Eliécer afirma: 'Como los perímetros de la base y la boca están en relación 18/24 = 3/4, el área de la base debe ser también tres cuartas partes del área de la boca'.",
+            question: "¿Es verdadera esta afirmación?",
+            options: [
+                "No, porque la medición se realiza con el mismo caucho y, por tanto, las áreas de la base y la boca deben ser iguales.",
+                "Sí, porque el caucho se estira dependiendo del área que encierre, por lo que las relaciones de las áreas y los perímetros son iguales.",
+                "No, porque la relación obtenida se cumple para las longitudes de los lados, pero al calcular las áreas, la razón obtenida se eleva al cuadrado.",
+                "Sí, porque como las figuras son semejantes, todas sus medidas deben tener la misma razón que los perímetros."
+            ],
+            correct: 2
+        },
+
+        // P9 — rentabilidad mango ciudad Z vs W
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.88rem;text-align:center">
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem;border:1px solid #CBD5E1">Ciudad</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Precio venta mango/ton</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Costo transp./camión</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Pago trabajador/viaje</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC"><td style="padding:.5rem;border:1px solid #CBD5E1">W</td><td style="padding:.5rem;border:1px solid #CBD5E1">$1.300.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$150.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$180.000</td></tr>
+<tr><td style="padding:.5rem;border:1px solid #CBD5E1">Z</td><td style="padding:.5rem;border:1px solid #CBD5E1">$1.350.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$180.000</td><td style="padding:.5rem;border:1px solid #CBD5E1">$200.000</td></tr>
+</tbody></table></div>`,
+            context: "Una persona afirma que para el comerciante es más rentable vender 6 toneladas de mango en la ciudad Z que en la ciudad W. Los 3 camiones de 5 ton c/u transportan 6 ton usando 2 camiones. Se pagan 2 trabajadores por camión.",
+            question: "¿Por qué la afirmación de esta persona es correcta?",
+            options: [
+                "Porque el dinero recibido en la venta del producto en la ciudad Z es mayor que el recibido en la ciudad W.",
+                "Porque la diferencia entre el precio de venta por tonelada es mayor que la diferencia entre el costo de transporte por camión.",
+                "Porque la diferencia entre las ventas totales en cada ciudad es mayor que la diferencia entre los gastos totales.",
+                "Porque el dinero total gastado en empleados y transporte es mayor en la ciudad W que en la ciudad Z."
+            ],
+            correct: 2
+        },
+
+        // P14 — rectángulo, aumento 100% en un lado
+        {
+            context: "Si en un rectángulo se aumenta la longitud de uno de sus lados en 100% (es decir, se duplica ese lado), el área original era A = base × altura. El nuevo lado pasa a ser 2×base, por lo que el nuevo área es 2×base × altura = 2A.",
+            question: "¿Qué se puede concluir de su área?",
+            options: [
+                "Aumenta en un 50%.",
+                "Se duplica.",
+                "No cambia.",
+                "Aumenta en 100 unidades."
+            ],
+            correct: 1
+        },
+
+        // P16 — escuela de natación, promedio no determina distribución
+        {
+            context: "Una escuela de natación tiene 16 estudiantes. Las personas con estatura inferior a 1,80 m van a la piscina menos profunda; las demás, a la más profunda. El director escucha que el promedio de estatura es 1,70 m e insiste en aumentar alumnos para que el promedio sea 1,80 m, afirmando que así se igualará la cantidad en las dos piscinas.",
+            question: "¿Por qué es errónea la afirmación del director?",
+            options: [
+                "Porque las 16 personas se encuentran actualmente en la piscina menos profunda. El director debe aceptar otros 16 alumnos con una estatura superior a 1,80 m.",
+                "Porque con el promedio es imposible determinar la cantidad de personas en las piscinas. Es necesario utilizar otras medidas, como la estatura máxima o mínima.",
+                "Porque incrementar el promedio a 1,80 m es insuficiente. El director debe aceptar más estudiantes con una altura de 1,80 m hasta igualar la cantidad en ambas piscinas.",
+                "Porque aunque el promedio de estatura de las 16 personas sea inferior a 1,80 m, no significa que la cantidad de personas en las piscinas sea diferente."
+            ],
+            correct: 3
+        },
+
+        // P21 — tienda mesas y sillas (ecuaciones correctas o no)
+        {
+            context: "En una tienda se venden mesas a $40.000 y sillas a $20.000. Los ingresos del mes fueron $1.400.000 y se vendieron 3 veces más sillas que mesas. Para determinar las cantidades (M = mesas, S = sillas), alguien planteó: Ecuación 1: 40.000M + 20.000S = 1.400.000. Ecuación 2: M = 3S.",
+            question: "¿Las ecuaciones representan correctamente la situación?",
+            options: [
+                "No, porque aunque la ecuación 1 relaciona cada precio con la variable adecuada de forma correcta, la ecuación 2 significa que se venden 3 veces más mesas que sillas.",
+                "Sí, porque la ecuación 1 relaciona cada precio con la variable adecuada y la ecuación 2 tiene en cuenta que la cantidad de sillas es 3 veces mayor que la de mesas.",
+                "No, porque aunque la ecuación 2 tiene en cuenta que la cantidad de sillas es 3 veces mayor que la de mesas, en la ecuación 1 los precios deberían estar dividiendo y no multiplicando.",
+                "Sí, porque al solucionar las dos ecuaciones se obtiene un número entero, lo cual es consistente con las condiciones iniciales del problema."
+            ],
+            correct: 0
+        },
+
+        // P31 — ecuación María/Nelson/Óscar
+        {
+            chart: `<div style="overflow-x:auto;margin:.75rem 0">
+<table style="border-collapse:collapse;width:100%;font-size:.82rem;text-align:center">
+<caption style="font-weight:700;margin-bottom:.4rem">Procedimientos para (x+2)(x+3) = 5(x+3)</caption>
+<thead><tr style="background:#1E3A8A;color:white">
+<th style="padding:.5rem;border:1px solid #CBD5E1">María</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Nelson</th>
+<th style="padding:.5rem;border:1px solid #CBD5E1">Óscar</th>
+</tr></thead>
+<tbody>
+<tr style="background:#F8FAFC;vertical-align:top">
+<td style="padding:.5rem;border:1px solid #CBD5E1;text-align:left">x²+5x+6 = 5x+15<br>x²+6 = 15<br>x² = 9<br>x = ±3</td>
+<td style="padding:.5rem;border:1px solid #CBD5E1;text-align:left">(x+2)(x+3)−5(x+3)=0<br>(x+3)(x−3)=0<br>x²−9=0<br>x = ±3</td>
+<td style="padding:.5rem;border:1px solid #CBD5E1;text-align:left">x+2+x+3=5+x+3<br>2x+5=x+8<br>x = 3</td>
+</tr>
+</tbody></table></div>`,
+            context: "Un profesor pide solucionar (x+2)(x+3) = 5(x+3). María, Nelson y Óscar realizan los procedimientos mostrados en la tabla.",
+            question: "¿Cuál(es) estudiante(s) desarrolló(aron) un procedimiento correcto para solucionar la ecuación?",
+            options: [
+                "Solo Nelson y Óscar.",
+                "Solo María y Nelson.",
+                "Solamente Óscar.",
+                "Solamente María."
+            ],
+            correct: 1
+        },
+
+        // P34 — decibeles, 20 dB ≠ ×20
+        {
+            context: "Una regla usada en física indica que, para aumentar el nivel de intensidad del sonido en 10 dB, es necesario que la intensidad medida se multiplique por 10. Ramiro debe aumentar en 20 dB la medida del nivel de intensidad y, según su interpretación, multiplica por 20 la intensidad actual.",
+            question: "¿Es correcta su interpretación?",
+            options: [
+                "No, porque la regla no considera aumentos de 20 dB, solamente de 10 dB; no hay consideraciones para aumentos mayores.",
+                "Sí, porque la regla presentada indica que para aumentar en x unidades el nivel de la medida de intensidad se agrega x a la intensidad.",
+                "No, porque aumentar 20 dB equivale a aumentar 10 dB dos veces, es decir, multiplicar por 10 la intensidad dos veces; en total, multiplicar por 100.",
+                "Sí, porque el resultado de multiplicar dos veces por 10 la intensidad es multiplicarla por 20; así, se ahorra un paso y obtiene el resultado correcto."
+            ],
+            correct: 2
+        },
+
+        // P36 — bolsa bolas (probabilidad igual por color?)
+        {
+            context: "En una bolsa hay 3 bolas rojas, 3 negras y 12 blancas. Una persona afirma que al sacar una bola al azar, los tres colores tienen la misma probabilidad de salir.",
+            question: "¿Es verdadera esta afirmación?",
+            options: [
+                "Sí, pues el número de bolas de cada color no importa.",
+                "No, pues no se sabe el número total de bolas en la bolsa.",
+                "No, pues hay más bolas de un color que de los otros dos.",
+                "Sí, pues las bolas están repartidas de igual manera."
+            ],
+            correct: 2
+        },
+
+        // P37 — circunferencia, triángulo equilátero imposible
+        {
+            chart: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;margin:.5rem auto;background:white;border-radius:8px;border:1px solid #E2E8F0">
+  <text x="140" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Circunferencia con centro O y puntos P, P'</text>
+  <!-- Circunferencia -->
+  <circle cx="140" cy="100" r="65" fill="#F8FAFC" stroke="#2563EB" stroke-width="2"/>
+  <!-- Centro O -->
+  <circle cx="140" cy="100" r="4" fill="#0F172A"/>
+  <text x="145" y="97" font-size="10" fill="#0F172A" font-weight="700">O</text>
+  <!-- Punto P -->
+  <circle cx="100" cy="50" r="4" fill="#EA580C"/>
+  <text x="90" y="47" font-size="10" fill="#EA580C" font-weight="700">P</text>
+  <!-- Punto P' -->
+  <circle cx="190" cy="145" r="4" fill="#10B981"/>
+  <text x="196" y="143" font-size="10" fill="#10B981" font-weight="700">P'</text>
+  <!-- Triángulo isósceles (OP = OP' = radio) -->
+  <polygon points="140,100 100,50 190,145" fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- Radios iguales -->
+  <text x="112" y="82" font-size="9" fill="#7C3AED">r</text>
+  <text x="172" y="122" font-size="9" fill="#7C3AED">r</text>
+  <!-- Nota -->
+  <text x="140" y="172" text-anchor="middle" font-size="9" fill="#64748B">OP = OP' = radio (siempre iguales)</text>
+</svg>`,
+            context: "Sobre una circunferencia de centro O se localizan dos puntos P y P' diferentes. Se van a unir entre sí los tres puntos P, P' y O.",
+            question: "¿Cuál figura NO puede resultar al unir entre sí los tres puntos P, P' y O?",
+            options: [
+                "Un triángulo isósceles.",
+                "Un radio de la circunferencia.",
+                "Un triángulo equilátero.",
+                "Un diámetro de la circunferencia."
+            ],
+            correct: 2
+        },
+
+        // P41 — terreno triangular, requerimiento imposible
+        {
+            context: "Un terreno con forma triangular debe cumplir: Req. 1: un ángulo de 90°. Req. 2: dos lados de 7 metros y el otro de 18 metros. Req. 3: un ángulo menor que 45°. Req. 4: la suma de ángulos interiores es 180°. Para el Req. 2: se verificaría la desigualdad triangular: 7 + 7 = 14 < 18, lo cual viola que la suma de dos lados debe ser mayor que el tercero.",
+            question: "¿Cuál de los requerimientos es imposible de cumplir?",
+            options: [
+                "Requerimiento 1.",
+                "Requerimiento 2.",
+                "Requerimiento 3.",
+                "Requerimiento 4."
+            ],
+            correct: 1
+        }
+    ],
+    retroalimentacion: {
+        alta: 'Excelente desempeño. Argumentas con solidez matemática: identifies errores en procedimientos, evaluás afirmaciones y justificás conclusiones con propiedad. Esta competencia es clave para el nivel más alto del ICFES.',
+        media: 'Buen nivel. Detectas los errores más obvios, pero en argumentaciones más sutiles (como la relación área-perímetro o la desigualdad triangular) aún puedes mejorar. Lee cada opción con calma antes de decidir.',
+        baja: 'Necesitas reforzar la argumentación. Cuando una pregunta diga "¿por qué es correcto/incorrecto?", busca la justificación matemática, no solo si el resultado es verdadero o falso. Practica explicando por escrito tus soluciones.'
+    },
+    tips: [
+        'En preguntas de "¿por qué es correcto/incorrecto?", la respuesta correcta siempre da una justificación matemática precisa, no solo confirma el resultado.',
+        'Recuerda: la relación entre perímetros es lineal (k), pero entre áreas es cuadrática (k²). Si los lados tienen razón 3/4, las áreas tienen razón 9/16.',
+        'La desigualdad triangular: la suma de cualquier par de lados debe ser MAYOR que el tercer lado. Si no se cumple, el triángulo no existe.',
+        'En ecuaciones: si un factor aparece en ambos lados, se puede factorizar. NO se puede dividir por ese factor si puede valer cero (eso elimina soluciones).',
+        'El promedio no te dice cómo están distribuidos los datos. Un promedio de 1,80 m no garantiza que la mitad esté por encima y la mitad por debajo.',
+        'En probabilidad: la probabilidad de cada resultado depende del número de casos favorables sobre el total, no solo de cuántos "tipos" haya.',
+        'Ante procedimientos con errores: ejecuta el procedimiento correcto tú mismo y compara paso a paso con el del enunciado para detectar dónde divergen.'
+    ]
+}
+
+}; // SIMULACROS_MAT (SM1, SM2, SM3)
+
+
 // ==================== SIMULACROS DE FÍSICA ====================
 // 3 simulacros × 10 preguntas = 30 preguntas, 20 min cada uno
 const SIMULACROS = {
@@ -2569,6 +3410,7 @@ const SIMULACROS = {
 
 // Estado del simulacro en curso
 let currentSim = null;
+Object.assign(SIMULACROS, SIMULACROS_MAT);
 let simTimer = null;
 let simTimeRemaining = 0;
 
@@ -2766,220 +3608,138 @@ function svgOpcionFig(figura) {
     return '<div style="display:inline-flex;align-items:center;gap:.5rem"><div style="background:white;padding:.2rem;border-radius:6px;border:1px solid #E2E8F0">' + figura + '</div></div>';
 }
 
-const LOGICO = {
-    b1: {
-        nombre: 'Secuencias numéricas y patrones',
-        descripcion: 'Identifica el patrón lógico-matemático que sigue una serie de números y predice los siguientes valores.',
-        tiempo: 15,
-        preguntas: [
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>2, 4, 8, 16, 32, ___</div>", question:"¿Qué número sigue en la secuencia?", options:["48","56","64","128"], correct:2 },
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>1, 3, 6, 10, 15, ___</div>", question:"¿Cuál es el siguiente número?", options:["18","20","21","25"], correct:2 },
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>5, 10, 20, 40, 80, ___</div>", question:"¿Cuál es el siguiente número?", options:["100","120","160","200"], correct:2 },
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>100, 90, 81, 73, 66, ___</div>", question:"¿Qué número sigue en la secuencia?", options:["58","60","62","64"], correct:1 },
-            { context:"Observa la siguiente secuencia (sucesión de Fibonacci):<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>1, 1, 2, 3, 5, 8, ___</div>", question:"¿Cuál es el siguiente número?", options:["10","11","12","13"], correct:3 },
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.5rem'>1, 4, 9, 16, 25, ___</div>", question:"¿Qué número sigue (son cuadrados perfectos)?", options:["30","32","36","49"], correct:2 },
-            { context:"Observa las siguientes parejas y encuentra el patrón:<br><br><div style='text-align:center;font-size:1.3rem;font-weight:600;color:#1E3A8A'>2 → 6 · 3 → 9 · 4 → 12 · 5 → ___</div>", question:"¿Cuál es el número que sigue?", options:["13","14","15","16"], correct:2 },
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.6rem;font-weight:700;color:#1E3A8A;letter-spacing:.4rem'>3, 6, 12, 24, 48, ___</div>", question:"¿Cuál es el siguiente número?", options:["72","96","98","100"], correct:1 },
-            { context:"Observa la siguiente secuencia:<br><br><div style='text-align:center;font-size:1.5rem;font-weight:700;color:#1E3A8A;letter-spacing:.4rem'>2, 5, 11, 23, 47, ___</div>", question:"¿Qué número sigue? (regla: multiplicar por 2 y sumar 1)", options:["89","91","93","95"], correct:3 },
-            { context:"Observa la siguiente secuencia con dos series alternadas:<br><br><div style='text-align:center;font-size:1.5rem;font-weight:700;color:#1E3A8A;letter-spacing:.4rem'>2, 10, 4, 20, 6, 30, 8, ___</div>", question:"¿Qué número sigue?", options:["32","36","40","48"], correct:2 }
-        ],
-        retroalimentacion: {
-            alta: 'Excelente. Tienes una gran habilidad para detectar patrones numéricos y aplicar reglas lógicas. Esta capacidad es muy útil tanto en matemáticas como en pruebas de razonamiento.',
-            media: 'Buen nivel. Identificas la mayoría de los patrones, pero algunos más complejos (con dos series alternadas o reglas compuestas) requieren más práctica.',
-            baja: 'Necesitas reforzar tu capacidad para reconocer patrones. Practica observando la diferencia entre números consecutivos: ¿se suma algo fijo? ¿se multiplica? ¿hay dos series intercaladas?'
-        },
-        tips: [
-            'Primero observa la diferencia entre números consecutivos: ¿hay un patrón fijo? (suma, resta, multiplicación, división).',
-            'Si la diferencia no es constante, mira la diferencia DE las diferencias (segunda derivada). Muchas veces hay patrón ahí.',
-            'Revisa si los números son potencias (cuadrados, cubos) o cubos perfectos.',
-            'Si nada coincide, prueba con dos series alternadas: posiciones impares (1ra, 3ra...) y posiciones pares (2da, 4ta...) por separado.',
-            'En la sucesión de Fibonacci, cada número es la suma de los dos anteriores: 1, 1, 2, 3, 5, 8, 13...',
-            'Verifica tu respuesta aplicando el patrón hacia atrás: si encuentras la regla, debe funcionar para TODA la secuencia.',
-            'Si tienes parejas (a → b), busca la relación: ¿se multiplica? ¿se suma? ¿se eleva al cuadrado?'
-        ]
-    },
-    b2: {
-        nombre: 'Series de figuras y analogías visuales',
-        descripcion: 'Reconoce patrones visuales en secuencias de figuras: rotaciones, traslaciones, cambios de color y forma.',
-        tiempo: 15,
-        preguntas: [
-            { context:"Observa la siguiente secuencia de figuras y decide cuál continúa:" + svgSerieFiguras([svgFig('circulo','#3B82F6'),svgFig('cuadrado','#3B82F6'),svgFig('triangulo','#3B82F6'),svgFig('circulo','#3B82F6'),svgFig('cuadrado','#3B82F6'),svgFig('incognita','')]), question:"¿Qué figura completa la serie?", options:[svgOpcionFig(svgFig('circulo','#3B82F6')),svgOpcionFig(svgFig('cuadrado','#3B82F6')),svgOpcionFig(svgFig('triangulo','#3B82F6')),svgOpcionFig(svgFig('rombo','#3B82F6'))], correct:2 },
-            { context:"Observa la siguiente secuencia de figuras:" + svgSerieFiguras([svgFig('cuadrado','#EA580C'),svgFig('cuadrado','#7C3AED'),svgFig('cuadrado','#10B981'),svgFig('cuadrado','#EA580C'),svgFig('cuadrado','#7C3AED'),svgFig('incognita','')]), question:"¿Qué figura sigue?", options:[svgOpcionFig(svgFig('cuadrado','#EA580C')),svgOpcionFig(svgFig('cuadrado','#10B981')),svgOpcionFig(svgFig('cuadrado','#7C3AED')),svgOpcionFig(svgFig('cuadrado','#1E3A8A'))], correct:1 },
-            { context:"Observa la siguiente secuencia (las figuras se llenan progresivamente):" + svgSerieFiguras([svgFig('circulo','#7C3AED',false),svgFig('circulo','#7C3AED',false),svgFig('circulo','#7C3AED'),svgFig('cuadrado','#7C3AED',false),svgFig('cuadrado','#7C3AED',false),svgFig('incognita','')]), question:"¿Qué figura completa la serie?", options:[svgOpcionFig(svgFig('cuadrado','#7C3AED',false)),svgOpcionFig(svgFig('cuadrado','#7C3AED')),svgOpcionFig(svgFig('circulo','#7C3AED')),svgOpcionFig(svgFig('triangulo','#7C3AED'))], correct:1 },
-            { context:"Observa la siguiente secuencia (las figuras aumentan en número de lados):" + svgSerieFiguras([svgFig('triangulo','#059669'),svgFig('cuadrado','#059669'),svgFig('pentagono','#059669'),svgFig('hexagono','#059669'),svgFig('incognita','')]), question:"¿Qué figura sigue lógicamente?", options:[svgOpcionFig(svgFig('circulo','#059669')),svgOpcionFig(svgFig('triangulo','#059669')),svgOpcionFig('<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\"><polygon points=\"40,10 60,20 70,40 60,60 40,70 20,60 10,40 20,20\" fill=\"#059669\"/></svg>'),svgOpcionFig(svgFig('estrella','#059669'))], correct:2 },
-            { context:"Observa el patrón: la figura rota 90° en sentido horario en cada paso." + svgSerieFiguras([svgFig('flecha','#DC2626'),'<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\" style=\"display:inline-block;vertical-align:middle\"><g transform=\"rotate(90,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>','<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\" style=\"display:inline-block;vertical-align:middle\"><g transform=\"rotate(180,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>',svgFig('incognita','')]), question:"¿Qué flecha continúa la serie?", options:[svgOpcionFig(svgFig('flecha','#DC2626')),svgOpcionFig('<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\"><g transform=\"rotate(270,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>'),svgOpcionFig('<svg viewBox=\"0 0 80 80\" width=\"64\" height=\"64\"><g transform=\"rotate(45,40,40)\"><polygon points=\"15,30 50,30 50,15 70,40 50,65 50,50 15,50\" fill=\"#DC2626\"/></g></svg>'),svgOpcionFig(svgFig('flecha','#1E3A8A'))], correct:1 },
-            { context:"Observa la secuencia: los círculos aumentan de tamaño." + '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0"><div style="display:flex;gap:.6rem;align-items:center;justify-content:center"><svg viewBox="0 0 80 80" width="40" height="40"><circle cx="40" cy="40" r="10" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="50" height="50"><circle cx="40" cy="40" r="18" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="60" height="60"><circle cx="40" cy="40" r="25" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="70" height="70"><circle cx="40" cy="40" r="32" fill="#3B82F6"/></svg><span style="color:#94A3B8;font-size:1.5rem">→</span><svg viewBox="0 0 80 80" width="64" height="64"><rect x="10" y="10" width="60" height="60" fill="#FEF3C7" stroke="#D97706" stroke-width="2" stroke-dasharray="4,3"/><text x="40" y="52" text-anchor="middle" font-size="36" font-weight="bold" fill="#D97706">?</text></svg></div></div>', question:"¿Qué círculo continúa la serie?", options:['Un círculo más grande (radio mayor)','Un círculo del mismo tamaño','Un círculo más pequeño','Un cuadrado del mismo tamaño'], correct:0 },
-            { context:"Observa la secuencia (alternancia entre figura llena y vacía):" + svgSerieFiguras([svgFig('estrella','#F59E0B'),svgFig('estrella','#F59E0B',false),svgFig('estrella','#F59E0B'),svgFig('estrella','#F59E0B',false),svgFig('incognita','')]), question:"¿Qué figura completa la serie?", options:[svgOpcionFig(svgFig('estrella','#F59E0B')),svgOpcionFig(svgFig('estrella','#F59E0B',false)),svgOpcionFig(svgFig('circulo','#F59E0B')),svgOpcionFig(svgFig('triangulo','#F59E0B'))], correct:0 },
-            { context:"En la siguiente analogía, la primera pareja muestra la regla. Encuentra la figura que sigue la misma lógica:" + '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0"><div style="display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap">' + svgFig('cuadrado','#3B82F6') + '<span style="font-size:1.4rem;color:#64748B">es a</span>' + svgFig('cuadrado','#3B82F6',false) + '<span style="font-size:1.5rem;color:#94A3B8;margin:0 .5rem">||</span>' + svgFig('circulo','#EA580C') + '<span style="font-size:1.4rem;color:#64748B">es a</span>' + svgFig('incognita','') + '</div></div>', question:"¿Qué figura completa la analogía?", options:[svgOpcionFig(svgFig('circulo','#EA580C')),svgOpcionFig(svgFig('circulo','#EA580C',false)),svgOpcionFig(svgFig('cuadrado','#EA580C')),svgOpcionFig(svgFig('triangulo','#EA580C'))], correct:1 },
-            { context:"Observa la secuencia. Cada figura tiene un patrón de color que se repite cada 3 elementos:" + svgSerieFiguras([svgFig('triangulo','#DC2626'),svgFig('triangulo','#059669'),svgFig('triangulo','#7C3AED'),svgFig('triangulo','#DC2626'),svgFig('triangulo','#059669'),svgFig('incognita','')]), question:"¿Qué color tendrá el siguiente triángulo?", options:['Rojo',svgOpcionFig(svgFig('triangulo','#7C3AED'))+' Morado','Verde','Azul'], correct:1 },
-            { context:"Observa la siguiente secuencia (el número de figuras aumenta uno cada vez):" + '<div style="background:linear-gradient(135deg,#F8FAFC 0%,#FFFFFF 100%);padding:1.25rem;border-radius:10px;border:2px solid #E2E8F0;margin:1rem 0"><div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap"><div style="display:flex;gap:.2rem">' + svgFig('cuadrado','#10B981') + '</div><span style="color:#94A3B8">→</span><div style="display:flex;gap:.2rem">' + svgFig('cuadrado','#10B981') + svgFig('cuadrado','#10B981') + '</div><span style="color:#94A3B8">→</span><div style="display:flex;gap:.2rem">' + svgFig('cuadrado','#10B981') + svgFig('cuadrado','#10B981') + svgFig('cuadrado','#10B981') + '</div><span style="color:#94A3B8">→</span>' + svgFig('incognita','') + '</div></div>', question:"¿Cuántos cuadrados verdes tendrá la siguiente figura?", options:['3 cuadrados','4 cuadrados','5 cuadrados','6 cuadrados'], correct:1 }
-        ],
-        retroalimentacion: {
-            alta: 'Excelente desempeño. Tienes una gran capacidad visual para detectar patrones, rotaciones, alternancias y analogías. Esto es muy útil en pruebas de razonamiento abstracto.',
-            media: 'Buen nivel. Reconoces los patrones más comunes, pero algunos casos con rotaciones o cambios múltiples (color + forma + tamaño) pueden costarte. Sigue practicando.',
-            baja: 'Necesitas reforzar tu razonamiento visual. Practica observando con calma cada figura: ¿cambia de forma? ¿de color? ¿de tamaño? ¿gira? Identifica UNA propiedad a la vez.'
-        },
-        tips: [
-            'Observa una propiedad a la vez: forma, color, tamaño, orientación, número de elementos.',
-            'En analogías (A es a B como C es a ?): identifica qué le pasó a A para convertirse en B, y aplica lo mismo a C.',
-            'En rotaciones, las flechas y figuras asimétricas suelen girar 90°, 180° o 270° en cada paso.',
-            'Cuenta los lados o elementos: muchas series siguen un patrón numérico (triángulo→3, cuadrado→4, pentágono→5...).',
-            'En patrones de color, busca ciclos: rojo-azul-rojo-azul, o secuencias de 3 que se repiten.',
-            'Si la figura se llena/vacía, fíjate si es alternancia (lleno-vacío-lleno) o progresión (vacío-medio-lleno).',
-            'Si todo parece confuso, descarta opciones obviamente incorrectas primero y elige entre las restantes.'
-        ]
-    }
-};
 
-// Estado del bloque de lógico en curso
-let currentLog = null;
-let logTimer = null;
-let logTimeRemaining = 0;
+// ==================== SIMULACROS DE MATEMÁTICAS (JavaScript) ====================
+const SIMULACROS_MAT_DATA = Object.assign({}, SIMULACROS_MAT);
+let currentSimMat = null;
+let simMatTimer = null;
+let simMatTimeRemaining = 0;
 
-function iniciarLogico(bId) {
-    const blk = LOGICO[bId];
-    if (!blk) return;
-    currentLog = {
-        id: bId,
-        blk: blk,
-        currentIndex: 0,
-        answers: [],
-        startTime: Date.now()
+function iniciarSimulacroMat(simId) {
+    const sim = SIMULACROS_MAT_DATA[simId];
+    if (!sim) return;
+    currentSimMat = {
+        id: simId, sim: sim, currentIndex: 0, answers: [], startTime: Date.now()
     };
-    logTimeRemaining = blk.tiempo * 60;
-    document.getElementById('logico-list').style.display = 'none';
-    document.getElementById('log-quiz-section').classList.add('active');
-    document.getElementById('log-results-section').classList.remove('active');
-    document.getElementById('log-title').textContent = '🧩 ' + blk.nombre;
-    document.getElementById('log-block-name').textContent = blk.descripcion;
-    iniciarTimerLog();
-    mostrarPreguntaLog();
+    simMatTimeRemaining = sim.tiempo * 60;
+    document.getElementById('simulacros-mat-list').style.display = 'none';
+    document.getElementById('sim-mat-quiz-section').classList.add('active');
+    document.getElementById('sim-mat-results-section').classList.remove('active');
+    document.getElementById('sim-mat-title').textContent = '🔢 ' + sim.nombre;
+    document.getElementById('sim-mat-competency-name').textContent = sim.descripcion;
+    iniciarTimerSimMat();
+    mostrarPreguntaSimMat();
 }
 
-function mostrarPreguntaLog() {
-    const blk = currentLog.blk;
-    const idx = currentLog.currentIndex;
-    const q = blk.preguntas[idx];
-    document.getElementById('log-current-question').textContent = idx + 1;
-    document.getElementById('log-progress-fill').style.width = (idx / blk.preguntas.length * 100) + '%';
-    const answered = currentLog.answers.filter(a => a !== undefined).length;
-    document.getElementById('log-answered-count').textContent = answered + ' respondidas';
-
-    document.getElementById('log-question-meta').innerHTML = '<span class="q-tag competency">🧩 ' + blk.nombre + '</span>';
-    document.getElementById('log-question-text').textContent = q.question;
-
-    const ctxEl = document.getElementById('log-question-context');
-    if (q.context) {
+function mostrarPreguntaSimMat() {
+    const sim = currentSimMat.sim;
+    const idx = currentSimMat.currentIndex;
+    const q = sim.preguntas[idx];
+    document.getElementById('sim-mat-current-question').textContent = idx + 1;
+    document.getElementById('sim-mat-progress-fill').style.width = (idx / sim.preguntas.length * 100) + '%';
+    const answered = currentSimMat.answers.filter(a => a !== undefined).length;
+    document.getElementById('sim-mat-answered-count').textContent = answered + ' respondidas';
+    document.getElementById('sim-mat-question-meta').innerHTML = '<span class="q-tag competency">🔢 ' + sim.nombre + '</span>';
+    document.getElementById('sim-mat-question-text').textContent = q.question;
+    const ctxEl = document.getElementById('sim-mat-question-context');
+    if (q.context || q.chart) {
         ctxEl.style.display = 'block';
-        ctxEl.innerHTML = q.context;
+        let html = '';
+        if (q.chart) html += q.chart;
+        if (q.context) html += '<div style="margin-top:.5rem">' + q.context + '</div>';
+        ctxEl.innerHTML = html;
     } else {
-        ctxEl.style.display = 'none';
+        ctxEl.style.display = 'none'; ctxEl.innerHTML = '';
     }
-
-    const opts = document.getElementById('log-options-container');
+    const opts = document.getElementById('sim-mat-options-container');
     opts.innerHTML = q.options.map((opt, i) => {
-        const sel = currentLog.answers[idx];
+        const sel = currentSimMat.answers[idx];
         let cls = 'option-btn';
         if (sel !== undefined && sel === i) cls += ' selected';
-        return '<button class="' + cls + '" onclick="seleccionarOpcionLog(' + i + ')">'
+        return '<button class="' + cls + '" onclick="seleccionarOpcionSimMat(' + i + ')">'
             + '<span class="option-letter">' + String.fromCharCode(65 + i) + '</span>'
             + '<span>' + opt + '</span></button>';
     }).join('');
-
-    const nb = document.getElementById('log-next-btn');
-    nb.textContent = idx === blk.preguntas.length - 1 ? '✅ Terminar bloque' : 'Siguiente →';
-    nb.disabled = currentLog.answers[idx] === undefined;
+    const nb = document.getElementById('sim-mat-next-btn');
+    nb.textContent = idx === sim.preguntas.length - 1 ? '✅ Terminar simulacro' : 'Siguiente →';
+    nb.disabled = currentSimMat.answers[idx] === undefined;
 }
 
-function seleccionarOpcionLog(i) {
-    currentLog.answers[currentLog.currentIndex] = i;
-    mostrarPreguntaLog();
+function seleccionarOpcionSimMat(i) {
+    currentSimMat.answers[currentSimMat.currentIndex] = i;
+    mostrarPreguntaSimMat();
 }
 
-function siguienteLog() {
-    const blk = currentLog.blk;
-    currentLog.currentIndex++;
-    if (currentLog.currentIndex >= blk.preguntas.length) {
-        terminarLogico(false);
+function siguienteSimMat() {
+    currentSimMat.currentIndex++;
+    if (currentSimMat.currentIndex >= currentSimMat.sim.preguntas.length) {
+        terminarSimulacrMat(false);
     } else {
-        mostrarPreguntaLog();
+        mostrarPreguntaSimMat();
     }
 }
 
-function confirmarSalirLog() {
-    if (confirm('¿Salir del bloque? Perderás todo el progreso de este intento.')) {
-        detenerTimerLog();
-        currentLog = null;
-        volverALogico();
+function confirmarSalirSimMat() {
+    if (confirm('¿Salir del simulacro? Perderás todo el progreso de este intento.')) {
+        detenerTimerSimMat(); currentSimMat = null; volverASimulacrsMat();
     }
 }
 
-function volverALogico() {
-    detenerTimerLog();
-    document.getElementById('logico-list').style.display = 'block';
-    document.getElementById('log-quiz-section').classList.remove('active');
-    document.getElementById('log-results-section').classList.remove('active');
+function volverASimulacrsMat() {
+    detenerTimerSimMat();
+    document.getElementById('simulacros-mat-list').style.display = 'block';
+    document.getElementById('sim-mat-quiz-section').classList.remove('active');
+    document.getElementById('sim-mat-results-section').classList.remove('active');
 }
 
-function iniciarTimerLog() {
-    actualizarTimerLog();
-    logTimer = setInterval(() => {
-        logTimeRemaining--;
-        actualizarTimerLog();
-        if (logTimeRemaining <= 0) {
-            detenerTimerLog();
-            terminarLogico(true);
-        }
+function iniciarTimerSimMat() {
+    actualizarTimerSimMat();
+    simMatTimer = setInterval(() => {
+        simMatTimeRemaining--;
+        actualizarTimerSimMat();
+        if (simMatTimeRemaining <= 0) { detenerTimerSimMat(); terminarSimulacrMat(true); }
     }, 1000);
 }
 
-function detenerTimerLog() {
-    if (logTimer) { clearInterval(logTimer); logTimer = null; }
+function detenerTimerSimMat() {
+    if (simMatTimer) { clearInterval(simMatTimer); simMatTimer = null; }
 }
 
-function actualizarTimerLog() {
-    const m = Math.floor(logTimeRemaining / 60);
-    const s = logTimeRemaining % 60;
-    const td = document.getElementById('log-timer-display');
+function actualizarTimerSimMat() {
+    const m = Math.floor(simMatTimeRemaining / 60), s = simMatTimeRemaining % 60;
+    const td = document.getElementById('sim-mat-timer-display');
     if (td) {
-        td.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-        td.className = 'timer-display' + (logTimeRemaining < 120 ? ' warning' : '');
+        td.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        td.className = 'timer-display' + (simMatTimeRemaining < 120 ? ' warning' : '');
     }
 }
 
-function terminarLogico(timeExpired) {
-    detenerTimerLog();
-    const blk = currentLog.blk;
-    const totalTime = blk.tiempo * 60;
-    const elapsed = totalTime - logTimeRemaining;
+function terminarSimulacrMat(timeExpired) {
+    detenerTimerSimMat();
+    const sim = currentSimMat.sim;
+    const totalTime = sim.tiempo * 60;
+    const elapsed = totalTime - simMatTimeRemaining;
     const em = Math.floor(elapsed / 60), es = elapsed % 60;
-    const timeStr = String(em).padStart(2, '0') + ':' + String(es).padStart(2, '0');
-
+    const timeStr = String(em).padStart(2,'0') + ':' + String(es).padStart(2,'0');
     let correct = 0;
-    blk.preguntas.forEach((q, i) => {
-        if (currentLog.answers[i] === q.correct) correct++;
-    });
-    const total = blk.preguntas.length;
+    sim.preguntas.forEach((q, i) => { if (currentSimMat.answers[i] === q.correct) correct++; });
+    const total = sim.preguntas.length;
     const pct = Math.round((correct / total) * 100);
-
-    document.getElementById('log-quiz-section').classList.remove('active');
-    document.getElementById('log-results-section').classList.add('active');
-    document.getElementById('log-final-score').textContent = pct + '%';
-    document.getElementById('log-feedback-correct').textContent = correct;
-    document.getElementById('log-feedback-incorrect').textContent = total - correct;
-    document.getElementById('log-feedback-time').textContent = timeStr;
-
+    document.getElementById('sim-mat-quiz-section').classList.remove('active');
+    document.getElementById('sim-mat-results-section').classList.add('active');
+    document.getElementById('sim-mat-final-score').textContent = pct + '%';
+    document.getElementById('sim-mat-feedback-correct').textContent = correct;
+    document.getElementById('sim-mat-feedback-incorrect').textContent = total - correct;
+    document.getElementById('sim-mat-feedback-time').textContent = timeStr;
     let retro;
-    if (pct >= 80) retro = blk.retroalimentacion.alta;
-    else if (pct >= 50) retro = blk.retroalimentacion.media;
-    else retro = blk.retroalimentacion.baja;
-
+    if (pct >= 80) retro = sim.retroalimentacion.alta;
+    else if (pct >= 50) retro = sim.retroalimentacion.media;
+    else retro = sim.retroalimentacion.baja;
     const msg = pct >= 80 ? '🏆 ¡Excelente desempeño!' : pct >= 50 ? '💪 ¡Buen trabajo, sigue así!' : '📚 Necesitas más práctica';
-    document.getElementById('log-results-message').textContent = (timeExpired ? '⏱️ Tiempo agotado. ' : '') + msg;
-    document.getElementById('log-feedback-rec').innerHTML = '<strong>📌 Bloque:</strong> ' + blk.nombre + '<br><br><strong>📝 Retroalimentación:</strong> ' + retro;
-
-    const tipsList = document.getElementById('log-tips-list');
-    tipsList.innerHTML = blk.tips.map(t => '<li style="padding:.4rem 0;display:flex;gap:.5rem;align-items:flex-start"><span style="flex-shrink:0">✓</span><span>' + t + '</span></li>').join('');
+    document.getElementById('sim-mat-results-message').textContent = (timeExpired ? '⏱️ Tiempo agotado. ' : '') + msg;
+    document.getElementById('sim-mat-feedback-rec').innerHTML = '<strong>📌 Competencia:</strong> ' + sim.nombre + '<br><br><strong>📝 Retroalimentación:</strong> ' + retro;
+    const tipsList = document.getElementById('sim-mat-tips-list');
+    tipsList.innerHTML = sim.tips.map(t => '<li style="padding:.4rem 0;display:flex;gap:.5rem;align-items:flex-start"><span style="flex-shrink:0">✓</span><span>' + t + '</span></li>').join('');
 }
 </script>
 </body>
